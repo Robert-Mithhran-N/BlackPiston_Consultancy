@@ -5,13 +5,24 @@ const Footer = () => (
     <div className="container py-12 md:py-16">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div className="col-span-2 md:col-span-1">
-          <div className="flex items-center gap-2 mb-4">
-            <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
-              <span className="font-heading font-black text-sm text-foreground">BP</span>
+          <div className="mb-4">
+            <img 
+              src="/blackpiston-logo.svg" 
+              alt="BlackPiston Consultancy" 
+              className="h-16 w-auto object-contain"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              }}
+            />
+            <div className="hidden flex items-center gap-2">
+              <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+                <span className="font-heading font-black text-sm text-foreground">BP</span>
+              </div>
+              <span className="font-heading font-bold text-primary-foreground text-lg">
+                Black<span className="text-gradient-gold">Piston</span>
+              </span>
             </div>
-            <span className="font-heading font-bold text-primary-foreground text-lg">
-              Black<span className="text-gradient-gold">Piston</span>
-            </span>
           </div>
           <p className="text-sm text-primary-foreground/50 leading-relaxed">
             Premium automotive consultancy. Buy & sell luxury vehicles with confidence.

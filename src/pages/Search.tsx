@@ -25,7 +25,7 @@ const SearchPage = () => {
   });
 
   const filtered = useMemo(() => {
-    let result = vehicles.filter((v) => {
+    const result = vehicles.filter((v) => {
       if (filters.type && v.type !== filters.type) return false;
       if (filters.make && v.make !== filters.make) return false;
       if (filters.fuel && v.fuel !== filters.fuel) return false;
