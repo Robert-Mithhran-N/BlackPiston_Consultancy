@@ -20,10 +20,19 @@ const Header = () => {
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
         <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
-            <span className="font-heading font-black text-sm text-foreground">BP</span>
-          </div>
-          <div className="hidden sm:block">
+          <img 
+            src="/blackpiston-logo.svg" 
+            alt="BlackPiston Consultancy" 
+            className="h-10 md:h-12 w-auto object-contain"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+            }}
+          />
+          <div className="hidden flex items-center gap-2">
+            <div className="w-8 h-8 rounded-sm bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+              <span className="font-heading font-black text-sm text-foreground">BP</span>
+            </div>
             <span className="font-heading font-bold text-primary-foreground text-lg tracking-tight">
               Black<span className="text-gradient-gold">Piston</span>
             </span>
