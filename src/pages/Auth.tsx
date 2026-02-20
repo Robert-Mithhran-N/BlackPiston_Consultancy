@@ -18,8 +18,19 @@ const Auth = () => {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="w-12 h-12 mx-auto rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mb-4">
-              <span className="font-heading font-black text-lg text-foreground">BP</span>
+            <div className="mx-auto mb-4 flex justify-center">
+              <img 
+                src="/blackpiston-logo.svg" 
+                alt="BlackPiston Consultancy" 
+                className="h-20 w-auto object-contain"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                }}
+              />
+              <div className="hidden w-12 h-12 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+                <span className="font-heading font-black text-lg text-foreground">BP</span>
+              </div>
             </div>
             <h1 className="font-heading text-2xl font-bold text-foreground">
               {mode === "login" ? "Welcome Back" : mode === "signup" ? "Create Account" : "Reset Password"}
