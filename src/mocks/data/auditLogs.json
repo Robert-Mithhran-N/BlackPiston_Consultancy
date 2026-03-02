@@ -1,0 +1,82 @@
+[
+    {
+        "id": "AUD001",
+        "action": "listing.approved",
+        "actor": "Priya Sharma",
+        "actorRole": "moderator",
+        "target": "LST003",
+        "targetLabel": "2021 Mercedes-Benz E-Class",
+        "details": "Listing approved after VIN verification",
+        "timestamp": "2026-03-02T08:45:00Z"
+    },
+    {
+        "id": "AUD002",
+        "action": "listing.flagged",
+        "actor": "System",
+        "actorRole": "system",
+        "target": "LST006",
+        "targetLabel": "2023 Kawasaki Ninja ZX-10R",
+        "details": "Auto-flagged: Suspicious VIN pattern detected",
+        "timestamp": "2026-03-02T07:30:00Z"
+    },
+    {
+        "id": "AUD003",
+        "action": "user.suspended",
+        "actor": "Rajesh Kumar",
+        "actorRole": "superadmin",
+        "target": "USR008",
+        "targetLabel": "Deepa Nair",
+        "details": "Suspended for payment fraud - multiple chargebacks",
+        "timestamp": "2026-03-01T16:20:00Z"
+    },
+    {
+        "id": "AUD004",
+        "action": "refund.initiated",
+        "actor": "Vikram Singh",
+        "actorRole": "finance",
+        "target": "TXN004",
+        "targetLabel": "$2,500 refund for Ducati Panigale V4",
+        "details": "Partial refund approved — vehicle condition mismatch",
+        "timestamp": "2026-03-01T14:00:00Z"
+    },
+    {
+        "id": "AUD005",
+        "action": "seller.verified",
+        "actor": "Priya Sharma",
+        "actorRole": "moderator",
+        "target": "SLR002",
+        "targetLabel": "MotoHub Delhi",
+        "details": "GST certificate verified, dealer license pending",
+        "timestamp": "2026-03-01T11:30:00Z"
+    },
+    {
+        "id": "AUD006",
+        "action": "listing.created",
+        "actor": "BikeWorld",
+        "actorRole": "seller",
+        "target": "LST008",
+        "targetLabel": "2024 Harley-Davidson Street Bob",
+        "details": "New listing submitted for review",
+        "timestamp": "2026-03-01T09:00:00Z"
+    },
+    {
+        "id": "AUD007",
+        "action": "settings.updated",
+        "actor": "Rajesh Kumar",
+        "actorRole": "superadmin",
+        "target": "settings",
+        "targetLabel": "Featured Listing Pricing",
+        "details": "Changed featured listing price from $29 to $39/week",
+        "timestamp": "2026-02-28T17:00:00Z"
+    },
+    {
+        "id": "AUD008",
+        "action": "listing.sold",
+        "actor": "System",
+        "actorRole": "system",
+        "target": "LST005",
+        "targetLabel": "2020 Audi Q5 Premium Plus",
+        "details": "Payment completed, ownership transfer initiated",
+        "timestamp": "2026-02-28T12:00:00Z"
+    }
+]

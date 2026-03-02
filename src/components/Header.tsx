@@ -19,14 +19,18 @@ const Header = () => {
     <header className="sticky top-0 z-50 bg-gradient-dark border-b border-gold/10">
       <div className="container flex items-center justify-between h-16 md:h-20">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 group">
-          <img 
-            src="/blackpiston-logo.svg" 
-            alt="BlackPiston Consultancy" 
-            className="h-10 md:h-12 w-auto object-contain"
+        <Link to="/" className="flex items-center group">
+          <img
+            src="/blackpiston-logo.png"
+            alt="BlackPiston Consultancy"
+            className="h-14 md:h-[72px] w-auto object-contain"
             onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              const target = e.currentTarget;
+              target.src = '/blackpiston-logo.svg';
+              target.onerror = () => {
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              };
             }}
           />
           <div className="hidden flex items-center gap-2">
@@ -45,11 +49,10 @@ const Header = () => {
             <Link
               key={link.to}
               to={link.to}
-              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${
-                location.pathname === link.to
+              className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${location.pathname === link.to
                   ? "text-gold bg-gold/10"
                   : "text-primary-foreground/70 hover:text-gold hover:bg-gold/5"
-              }`}
+                }`}
             >
               {link.label}
             </Link>
@@ -113,11 +116,10 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${
-                    location.pathname === link.to
+                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${location.pathname === link.to
                       ? "text-gold bg-gold/10"
                       : "text-primary-foreground/70 hover:text-gold"
-                  }`}
+                    }`}
                 >
                   {link.label}
                 </Link>

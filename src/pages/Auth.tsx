@@ -18,17 +18,21 @@ const Auth = () => {
         <div className="w-full max-w-md">
           {/* Logo */}
           <div className="text-center mb-8">
-            <div className="mx-auto mb-4 flex justify-center">
-              <img 
-                src="/blackpiston-logo.svg" 
-                alt="BlackPiston Consultancy" 
-                className="h-20 w-auto object-contain"
+            <div className="mx-auto mb-4 flex justify-center items-center" style={{ minHeight: '80px' }}>
+              <img
+                src="/blackpiston-logo.png"
+                alt="BlackPiston Consultancy"
+                className="h-28 w-auto object-contain mx-auto"
                 onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                  e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                  const target = e.currentTarget;
+                  target.src = '/blackpiston-logo.svg';
+                  target.onerror = () => {
+                    target.style.display = 'none';
+                    target.nextElementSibling?.classList.remove('hidden');
+                  };
                 }}
               />
-              <div className="hidden w-12 h-12 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+              <div className="hidden w-12 h-12 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mx-auto">
                 <span className="font-heading font-black text-lg text-foreground">BP</span>
               </div>
             </div>
@@ -39,8 +43,8 @@ const Auth = () => {
               {mode === "login"
                 ? "Sign in to your BlackPiston account"
                 : mode === "signup"
-                ? "Join the premium automotive marketplace"
-                : "We'll send you a reset link"}
+                  ? "Join the premium automotive marketplace"
+                  : "We'll send you a reset link"}
             </p>
           </div>
 

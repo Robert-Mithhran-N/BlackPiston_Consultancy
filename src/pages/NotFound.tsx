@@ -11,17 +11,21 @@ const NotFound = () => {
   return (
     <div className="flex min-h-screen items-center justify-center bg-muted">
       <div className="text-center">
-        <div className="mb-6 flex justify-center">
-          <img 
-            src="/blackpiston-logo.svg" 
-            alt="BlackPiston Consultancy" 
-            className="h-24 w-auto object-contain"
+        <div className="mb-6 flex justify-center items-center" style={{ minHeight: '96px' }}>
+          <img
+            src="/blackpiston-logo.png"
+            alt="BlackPiston Consultancy"
+            className="h-32 w-auto object-contain mx-auto"
             onError={(e) => {
-              e.currentTarget.style.display = 'none';
-              e.currentTarget.nextElementSibling?.classList.remove('hidden');
+              const target = e.currentTarget;
+              target.src = '/blackpiston-logo.svg';
+              target.onerror = () => {
+                target.style.display = 'none';
+                target.nextElementSibling?.classList.remove('hidden');
+              };
             }}
           />
-          <div className="hidden w-16 h-16 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center">
+          <div className="hidden w-16 h-16 rounded-lg bg-gradient-to-br from-gold to-gold-dark flex items-center justify-center mx-auto">
             <span className="font-heading font-black text-2xl text-foreground">BP</span>
           </div>
         </div>
