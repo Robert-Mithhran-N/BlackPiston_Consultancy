@@ -108,9 +108,8 @@ const VehicleDetail = () => {
                     <button
                       key={i}
                       onClick={() => setActiveImg(i)}
-                      className={`shrink-0 w-20 h-14 rounded-md overflow-hidden border-2 transition-colors ${
-                        i === activeImg ? "border-gold" : "border-transparent hover:border-border"
-                      }`}
+                      className={`shrink-0 w-20 h-14 rounded-md overflow-hidden border-2 transition-colors ${i === activeImg ? "border-gold" : "border-transparent hover:border-border"
+                        }`}
                     >
                       <img src={img} alt="" className="w-full h-full object-cover" loading="lazy" />
                     </button>
@@ -134,9 +133,8 @@ const VehicleDetail = () => {
                   </span>
                   <button
                     onClick={() => setSaved(!saved)}
-                    className={`p-2 rounded-lg border transition-colors ${
-                      saved ? "border-gold bg-gold/10 text-gold" : "border-border text-muted-foreground hover:text-gold hover:border-gold"
-                    }`}
+                    className={`p-2 rounded-lg border transition-colors ${saved ? "border-gold bg-gold/10 text-gold" : "border-border text-muted-foreground hover:text-gold hover:border-gold"
+                      }`}
                     aria-label={saved ? "Unsave" : "Save"}
                   >
                     <Heart className="w-5 h-5" fill={saved ? "currentColor" : "none"} />
@@ -199,19 +197,18 @@ const VehicleDetail = () => {
 
             {/* Sidebar */}
             <div className="space-y-6">
-              <SellerCard seller={vehicle.seller} />
+              <SellerCard seller={vehicle.seller} badges={vehicle.badges} />
 
               {/* Sticky Mobile CTA */}
               <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-card border-t border-border p-3 flex gap-2">
                 <div className="flex-1">
                   <div className="font-heading font-bold text-xl text-gold">£{vehicle.price.toLocaleString()}</div>
                 </div>
-                <a
-                  href={`tel:${vehicle.seller.phone}`}
+                <button
                   className="flex items-center gap-1 px-6 py-2.5 bg-gold hover:bg-gold-dark text-accent-foreground font-semibold rounded-lg transition-colors text-sm"
                 >
-                  Contact
-                </a>
+                  Enquire
+                </button>
               </div>
             </div>
           </div>

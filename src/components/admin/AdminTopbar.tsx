@@ -102,7 +102,7 @@ export function AdminTopbar({ onMenuClick }: AdminTopbarProps) {
                             My Profile
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem onClick={() => navigate('/admin/login')} className="text-destructive">
+                        <DropdownMenuItem onClick={() => { localStorage.removeItem('isAdmin'); navigate('/admin-login'); }} className="text-destructive">
                             <LogOut className="w-4 h-4 mr-2" />
                             Sign Out
                         </DropdownMenuItem>

@@ -222,8 +222,10 @@ export default function AdminUsers() {
 
                                 <div className="flex gap-2 pt-2">
                                     <Button
-                                        variant={detailUser.status === 'suspended' ? 'default' : 'destructive'}
-                                        className="gap-1.5"
+                                        className={detailUser.status === 'suspended'
+                                            ? 'bg-[#0F3D2E] hover:bg-[#0B2E22] text-white gap-1.5'
+                                            : 'bg-red-600 hover:bg-red-700 text-white gap-1.5'
+                                        }
                                         onClick={() => toggleSuspend(detailUser)}
                                     >
                                         {detailUser.status === 'suspended' ? <UserCheck className="w-4 h-4" /> : <UserX className="w-4 h-4" />}

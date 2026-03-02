@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import HeroSearch from "@/components/HeroSearch";
-import TrustBadges from "@/components/TrustBadges";
+
 import VehicleCard from "@/components/VehicleCard";
 import { vehicles } from "@/data/vehicles";
 
@@ -16,7 +16,6 @@ const Index = () => {
       <Header />
       <main>
         <HeroSearch />
-        <TrustBadges />
 
         {/* Featured Vehicles */}
         <section className="py-16 md:py-20 bg-muted/30">
@@ -69,16 +68,16 @@ const Index = () => {
               transition={{ duration: 0.5 }}
             >
               <h2 className="font-heading text-3xl md:text-4xl font-bold text-primary-foreground mb-4">
-                Ready to Sell Your Vehicle?
+                Sell Your Vehicle to BlackPiston
               </h2>
               <p className="text-primary-foreground/60 max-w-lg mx-auto mb-8">
-                List your car or motorbike on BlackPiston and reach thousands of verified buyers
+                Get a competitive offer from our expert acquisition team. Fast, fair, and hassle-free.
               </p>
               <Link
-                to="/create-listing"
+                to="/sell-to-us"
                 className="inline-flex items-center gap-2 bg-gold hover:bg-gold-dark text-accent-foreground font-semibold px-8 py-3 rounded-lg transition-colors"
               >
-                Create Free Listing
+                Get a Quote
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </motion.div>

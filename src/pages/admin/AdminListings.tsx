@@ -146,7 +146,7 @@ export default function AdminListings() {
                     <h1 className="font-heading text-2xl font-bold">Listings</h1>
                     <p className="text-muted-foreground text-sm mt-0.5">Manage vehicle listings across the marketplace</p>
                 </div>
-                <Button onClick={exportCSV} variant="outline" className="gap-2">
+                <Button onClick={exportCSV} variant="outline" className="gap-2 border-[#C9A14A]/50 text-[#C9A14A] hover:bg-[#C9A14A]/10">
                     <Download className="w-4 h-4" />
                     Export XLSX
                 </Button>
@@ -192,13 +192,13 @@ export default function AdminListings() {
                 selectable
                 selectedIds={selectedIds}
                 onSelectionChange={setSelectedIds}
-                onRowClick={setDetailListing}
+                onRowClick={(row) => setDetailListing(row as Listing)}
                 bulkActions={
                     <div className="flex gap-2">
-                        <Button size="sm" variant="outline" className="h-7 text-xs gap-1" onClick={() => bulkAction('approve')}>
+                        <Button size="sm" className="h-7 text-xs gap-1 bg-[#0F3D2E] text-white hover:bg-[#0B2E22]" onClick={() => bulkAction('approve')}>
                             <CheckCircle className="w-3.5 h-3.5" /> Approve
                         </Button>
-                        <Button size="sm" variant="outline" className="h-7 text-xs gap-1 text-red-600" onClick={() => bulkAction('reject')}>
+                        <Button size="sm" variant="outline" className="h-7 text-xs gap-1 border-red-300 text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400 dark:hover:bg-red-950" onClick={() => bulkAction('reject')}>
                             <XCircle className="w-3.5 h-3.5" /> Reject
                         </Button>
                         <Button size="sm" variant="outline" className="h-7 text-xs gap-1" onClick={() => bulkAction('archive')}>
@@ -261,14 +261,14 @@ export default function AdminListings() {
                                 <div className="flex gap-2 pt-2">
                                     {detailListing.status === 'pending' && (
                                         <Button
-                                            className="bg-emerald-600 hover:bg-emerald-700 text-white gap-1.5"
+                                            className="bg-[#0F3D2E] hover:bg-[#0B2E22] text-white gap-1.5"
                                             onClick={() => { toast.success('Listing approved'); setDetailListing(null); fetchListings(); }}
                                         >
                                             <CheckCircle className="w-4 h-4" /> Approve
                                         </Button>
                                     )}
                                     {detailListing.status !== 'archived' && (
-                                        <Button variant="outline" className="gap-1.5 text-red-600" onClick={() => { toast.success('Listing rejected'); setDetailListing(null); fetchListings(); }}>
+                                        <Button variant="outline" className="gap-1.5 border-red-300 text-red-600 hover:bg-red-50 dark:border-red-800 dark:text-red-400" onClick={() => { toast.success('Listing rejected'); setDetailListing(null); fetchListings(); }}>
                                             <XCircle className="w-4 h-4" /> Reject
                                         </Button>
                                     )}

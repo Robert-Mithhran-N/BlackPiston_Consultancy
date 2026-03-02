@@ -1,0 +1,271 @@
+[
+    {
+        "id": "inv_001",
+        "slug": "mercedes-s-class-s580-2023-inv001",
+        "source": "admin",
+        "make": "Mercedes-Benz",
+        "model": "S-Class",
+        "title": "2023 Mercedes-Benz S-Class S580",
+        "year": 2023,
+        "price": 124900,
+        "mileage": 8500,
+        "fuel": "Petrol",
+        "transmission": "Automatic",
+        "color": "Obsidian Black",
+        "location": "London, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1618843479313-40f8afb4b4d8?w=800&q=80",
+            "https://images.unsplash.com/photo-1617814076367-b759c7d7e738?w=800&q=80",
+            "https://images.unsplash.com/photo-1616422285623-13ff0162193c?w=800&q=80"
+        ],
+        "description": "Immaculate S-Class with full dealer history. Loaded with every option including Executive Rear Package, Burmester 4D sound, and MBUX augmented reality navigation.",
+        "specs": {
+            "engine": "4.0L V8 Biturbo",
+            "horsepower": 496,
+            "topSpeed": "155 mph",
+            "acceleration": "4.4s 0-60",
+            "drivetrain": "AWD",
+            "seats": 5
+        },
+        "features": [
+            "Panoramic Roof",
+            "Night Vision",
+            "Rear Entertainment",
+            "Air Suspension",
+            "Head-Up Display",
+            "Massage Seats"
+        ],
+        "type": "car",
+        "badges": [
+            "BlackPiston Certified",
+            "Full History"
+        ],
+        "published": true,
+        "status": "available",
+        "acquisitionPrice": 115000,
+        "createdAt": "2025-12-15T00:00:00Z",
+        "publishedAt": "2025-12-20T00:00:00Z"
+    },
+    {
+        "id": "inv_002",
+        "slug": "bmw-m4-competition-2022-inv002",
+        "source": "admin",
+        "make": "BMW",
+        "model": "M4",
+        "title": "2022 BMW M4 Competition",
+        "year": 2022,
+        "price": 67500,
+        "mileage": 15200,
+        "fuel": "Petrol",
+        "transmission": "Automatic",
+        "color": "Isle of Man Green",
+        "location": "Manchester, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1555215695-3004980ad54e?w=800&q=80",
+            "https://images.unsplash.com/photo-1580273916550-e323be2ae537?w=800&q=80"
+        ],
+        "description": "Stunning M4 Competition in rare Isle of Man Green. Carbon fibre roof, M Drive Professional, and Harman Kardon surround sound.",
+        "specs": {
+            "engine": "3.0L I6 Twin-Turbo",
+            "horsepower": 503,
+            "topSpeed": "180 mph",
+            "acceleration": "3.8s 0-60",
+            "drivetrain": "RWD",
+            "seats": 4
+        },
+        "features": [
+            "Carbon Roof",
+            "M Sport Exhaust",
+            "Adaptive Suspension",
+            "Laser Lights",
+            "Wireless Charging"
+        ],
+        "type": "car",
+        "badges": [
+            "BlackPiston Certified"
+        ],
+        "published": true,
+        "status": "available",
+        "acquisitionPrice": 58000,
+        "createdAt": "2025-11-20T00:00:00Z",
+        "publishedAt": "2025-11-25T00:00:00Z"
+    },
+    {
+        "id": "inv_003",
+        "slug": "porsche-911-carrera-s-2024-inv003",
+        "source": "admin",
+        "make": "Porsche",
+        "model": "911",
+        "title": "2024 Porsche 911 Carrera S",
+        "year": 2024,
+        "price": 112000,
+        "mileage": 3200,
+        "fuel": "Petrol",
+        "transmission": "PDK",
+        "color": "GT Silver",
+        "location": "Surrey, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=800&q=80",
+            "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?w=800&q=80"
+        ],
+        "description": "Nearly new 911 Carrera S with Sport Chrono, PASM, and Bose surround. Full Porsche warranty remaining.",
+        "specs": {
+            "engine": "3.0L Flat-6 Twin-Turbo",
+            "horsepower": 443,
+            "topSpeed": "191 mph",
+            "acceleration": "3.3s 0-60",
+            "drivetrain": "RWD",
+            "seats": 4
+        },
+        "features": [
+            "Sport Chrono",
+            "PASM",
+            "Sport Exhaust",
+            "Bose Audio",
+            "Rear Axle Steering"
+        ],
+        "type": "car",
+        "badges": [
+            "BlackPiston Certified",
+            "Warranty"
+        ],
+        "published": true,
+        "status": "available",
+        "acquisitionPrice": 100000,
+        "createdAt": "2026-01-05T00:00:00Z",
+        "publishedAt": "2026-01-10T00:00:00Z"
+    },
+    {
+        "id": "inv_004",
+        "slug": "ducati-panigale-v4s-2023-inv004",
+        "source": "admin",
+        "make": "Ducati",
+        "model": "Panigale V4 S",
+        "title": "2023 Ducati Panigale V4 S",
+        "year": 2023,
+        "price": 28500,
+        "mileage": 2100,
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Ducati Red",
+        "location": "Bristol, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=800&q=80",
+            "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?w=800&q=80"
+        ],
+        "description": "Immaculate Panigale V4 S with Öhlins semi-active suspension, quick-shifter, and Akrapovič exhaust.",
+        "specs": {
+            "engine": "1103cc V4",
+            "horsepower": 214,
+            "topSpeed": "186 mph",
+            "acceleration": "2.9s 0-60",
+            "drivetrain": "Chain",
+            "seats": 2
+        },
+        "features": [
+            "Öhlins Suspension",
+            "Quick-Shifter",
+            "Akrapovič Exhaust",
+            "GPS Lap Timer",
+            "Cornering ABS"
+        ],
+        "type": "motorbike",
+        "badges": [
+            "BlackPiston Certified"
+        ],
+        "published": true,
+        "status": "available",
+        "acquisitionPrice": 24000,
+        "createdAt": "2026-01-10T00:00:00Z",
+        "publishedAt": "2026-01-15T00:00:00Z"
+    },
+    {
+        "id": "inv_005",
+        "slug": "range-rover-sport-d350-2023-inv005",
+        "source": "admin",
+        "make": "Land Rover",
+        "model": "Range Rover Sport",
+        "title": "2023 Range Rover Sport D350",
+        "year": 2023,
+        "price": 89995,
+        "mileage": 12400,
+        "fuel": "Diesel",
+        "transmission": "Automatic",
+        "color": "Carpathian Grey",
+        "location": "Birmingham, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?w=800&q=80",
+            "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?w=800&q=80"
+        ],
+        "description": "Range Rover Sport Dynamic HSE with every luxury option. Air suspension, meridian sound, 360 cameras.",
+        "specs": {
+            "engine": "3.0L I6 Diesel",
+            "horsepower": 346,
+            "topSpeed": "140 mph",
+            "acceleration": "5.7s 0-60",
+            "drivetrain": "AWD",
+            "seats": 5
+        },
+        "features": [
+            "Air Suspension",
+            "Meridian Sound",
+            "360 Cameras",
+            "Heated Steering",
+            "Pixel LED Lights"
+        ],
+        "type": "car",
+        "badges": [
+            "BlackPiston Certified",
+            "Full History"
+        ],
+        "published": true,
+        "status": "available",
+        "acquisitionPrice": 78000,
+        "createdAt": "2025-10-28T00:00:00Z",
+        "publishedAt": "2025-11-01T00:00:00Z"
+    },
+    {
+        "id": "inv_006",
+        "slug": "tesla-model-s-plaid-2022-inv006",
+        "source": "admin",
+        "make": "Tesla",
+        "model": "Model S",
+        "title": "2022 Tesla Model S Plaid",
+        "year": 2022,
+        "price": 79900,
+        "mileage": 18500,
+        "fuel": "Electric",
+        "transmission": "Automatic",
+        "color": "Pearl White",
+        "location": "Cambridge, UK",
+        "images": [
+            "https://images.unsplash.com/photo-1560958089-b8a1929cea89?w=800&q=80",
+            "https://images.unsplash.com/photo-1536700503339-1e4b06520771?w=800&q=80"
+        ],
+        "description": "Model S Plaid with full self-driving capability, yoke steering, and all white interior.",
+        "specs": {
+            "engine": "Tri Motor Electric",
+            "horsepower": 1020,
+            "topSpeed": "200 mph",
+            "acceleration": "1.99s 0-60",
+            "drivetrain": "AWD",
+            "seats": 5
+        },
+        "features": [
+            "Full Self-Driving",
+            "Yoke Steering",
+            "22\" Wheels",
+            "Gaming Computer",
+            "Premium Audio"
+        ],
+        "type": "car",
+        "badges": [
+            "BlackPiston Certified"
+        ],
+        "published": false,
+        "status": "draft",
+        "acquisitionPrice": 68000,
+        "createdAt": "2026-02-15T00:00:00Z",
+        "publishedAt": null
+    }
+]

@@ -1,11 +1,18 @@
-import { useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { Outlet, useNavigate } from 'react-router-dom';
 import { AdminSidebar } from './AdminSidebar';
 import { AdminTopbar } from './AdminTopbar';
 
 export function AdminShell() {
+    const navigate = useNavigate();
     const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
     const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+    useEffect(() => {
+        if (localStorage.getItem('isAdmin') !== 'true') {
+            navigate('/admin-login', { replace: true });
+        }
+    }, [navigate]);
 
     return (
         <div className="min-h-screen bg-background flex">

@@ -57,21 +57,22 @@ const HeroSearch = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="glass-dark rounded-xl p-2 md:p-3 max-w-3xl mx-auto"
+          className="bg-[#0F3D2E] rounded-xl p-3 md:p-4 max-w-3xl mx-auto shadow-luxury-lg"
         >
-          <div className="flex flex-col md:flex-row gap-2">
+          <div className="flex flex-col md:flex-row gap-2.5">
             {/* Type Toggle */}
-            <div className="flex bg-card/10 rounded-lg p-1">
+            <div className="flex rounded-lg p-1 gap-1" role="radiogroup" aria-label="Vehicle type">
               {["car", "motorbike"].map((t) => (
                 <button
                   key={t}
                   type="button"
+                  role="radio"
+                  aria-checked={type === t}
                   onClick={() => setType(t)}
-                  className={`px-4 py-2 rounded-md text-sm font-medium transition-all ${
-                    type === t
-                      ? "bg-gold text-accent-foreground"
-                      : "text-primary-foreground/60 hover:text-primary-foreground"
-                  }`}
+                  className={`px-5 py-2.5 rounded-lg text-sm font-semibold transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4B06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F3D2E] ${type === t
+                    ? "bg-[#D4B06A] text-[#111111] shadow-md"
+                    : "bg-white text-[#111111] border border-[#D4B06A]/40 hover:bg-[#D4B06A]/15"
+                    }`}
                 >
                   {t === "car" ? "Cars" : "Motorbikes"}
                 </button>
@@ -83,15 +84,15 @@ const HeroSearch = () => {
               <select
                 value={make}
                 onChange={(e) => setMake(e.target.value)}
-                className="w-full h-11 bg-card/10 border-0 rounded-lg px-4 text-sm text-primary-foreground appearance-none cursor-pointer focus:ring-2 focus:ring-gold/50 focus:outline-none"
+                className="w-full h-11 bg-white text-[#111111] border border-[#D4B06A]/40 rounded-lg px-4 text-sm appearance-none cursor-pointer transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4B06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F3D2E]"
                 aria-label="Select make"
               >
                 <option value="">Any Make</option>
                 {makes.map((m) => (
-                  <option key={m} value={m} className="text-foreground">{m}</option>
+                  <option key={m} value={m}>{m}</option>
                 ))}
               </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/40 pointer-events-none" />
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111]/40 pointer-events-none" />
             </div>
 
             {/* Price */}
@@ -99,21 +100,21 @@ const HeroSearch = () => {
               <select
                 value={priceMax}
                 onChange={(e) => setPriceMax(e.target.value)}
-                className="w-full h-11 bg-card/10 border-0 rounded-lg px-4 text-sm text-primary-foreground appearance-none cursor-pointer focus:ring-2 focus:ring-gold/50 focus:outline-none"
+                className="w-full h-11 bg-white text-[#111111] border border-[#D4B06A]/40 rounded-lg px-4 text-sm appearance-none cursor-pointer transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4B06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F3D2E]"
                 aria-label="Maximum price"
               >
                 <option value="">Any Price</option>
                 {[10000, 25000, 50000, 75000, 100000, 150000].map((p) => (
-                  <option key={p} value={p} className="text-foreground">Up to £{p.toLocaleString()}</option>
+                  <option key={p} value={p}>Up to £{p.toLocaleString()}</option>
                 ))}
               </select>
-              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-primary-foreground/40 pointer-events-none" />
+              <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-[#111111]/40 pointer-events-none" />
             </div>
 
             {/* Submit */}
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 bg-gold hover:bg-gold-dark text-accent-foreground font-semibold px-8 h-11 rounded-lg transition-colors duration-200"
+              className="flex items-center justify-center gap-2 bg-[#C9A14A] hover:bg-[#B8913F] text-[#111111] font-semibold px-8 h-11 rounded-lg transition-all duration-200 shadow-sm shadow-[#C9A14A]/20 active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#D4B06A] focus-visible:ring-offset-2 focus-visible:ring-offset-[#0F3D2E]"
             >
               <Search className="w-4 h-4" />
               Search

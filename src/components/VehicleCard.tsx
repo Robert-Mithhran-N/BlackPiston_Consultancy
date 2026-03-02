@@ -53,9 +53,9 @@ const VehicleCard = ({ vehicle, layout = "grid" }: VehicleCardProps) => {
   }
 
   return (
-    <div className="group bg-card rounded-lg overflow-hidden shadow-luxury hover-lift border border-border">
+    <div className="group bg-card rounded-xl overflow-hidden shadow-luxury hover-lift border border-border hover:border-[#C9A14A]/30 flex flex-col h-full transition-all duration-300">
       <Link to={`/vehicle/${vehicle.id}`} className="block">
-        <div className="relative aspect-[4/3] overflow-hidden">
+        <div className="relative aspect-video overflow-hidden">
           <img
             src={vehicle.images[0]}
             alt={vehicle.title}
@@ -69,16 +69,15 @@ const VehicleCard = ({ vehicle, layout = "grid" }: VehicleCardProps) => {
           )}
           <button
             onClick={(e) => { e.preventDefault(); setSaved(!saved); }}
-            className={`absolute top-3 right-3 p-2 rounded-full transition-colors ${
-              saved ? "bg-gold text-accent-foreground" : "bg-card/80 backdrop-blur text-card-foreground hover:bg-gold hover:text-accent-foreground"
-            }`}
+            className={`absolute top-3 right-3 p-2.5 rounded-full transition-all duration-200 ${saved ? "bg-[#C9A14A] text-[#111111] shadow-md" : "bg-black/40 backdrop-blur-sm text-white hover:bg-[#C9A14A] hover:text-[#111111]"
+              }`}
             aria-label={saved ? "Unsave vehicle" : "Save vehicle"}
           >
             <Heart className="w-4 h-4" fill={saved ? "currentColor" : "none"} />
           </button>
         </div>
       </Link>
-      <div className="p-4">
+      <div className="p-4 flex flex-col flex-1">
         <Link to={`/vehicle/${vehicle.id}`}>
           <h3 className="font-heading font-bold text-card-foreground group-hover:text-gold transition-colors line-clamp-1">
             {vehicle.title}
@@ -93,13 +92,13 @@ const VehicleCard = ({ vehicle, layout = "grid" }: VehicleCardProps) => {
           <span className="flex items-center gap-1"><Fuel className="w-3.5 h-3.5" />{vehicle.fuel}</span>
           <span className="flex items-center gap-1"><Settings2 className="w-3.5 h-3.5" />{vehicle.transmission}</span>
         </div>
-        <div className="flex items-end justify-between mt-4 pt-3 border-t border-border">
+        <div className="flex items-end justify-between mt-auto pt-3 border-t border-border">
           <span className="font-heading font-bold text-xl text-gold">
             £{vehicle.price.toLocaleString()}
           </span>
-          {vehicle.seller.verified && (
-            <span className="text-xs text-primary font-medium bg-primary/10 px-2 py-0.5 rounded">
-              Verified
+          {vehicle.source === "admin" && (
+            <span className="text-[10px] text-[#0F3D2E] font-semibold bg-[#0F3D2E]/10 px-2 py-0.5 rounded flex items-center gap-1">
+              ✓ BP Certified
             </span>
           )}
         </div>
