@@ -5,14 +5,18 @@ const Footer = () => (
     <div className="container py-12 md:py-16">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div className="col-span-2 md:col-span-1">
-          <div className="mb-4">
-            <img 
-              src="/blackpiston-logo.svg" 
-              alt="BlackPiston Consultancy" 
-              className="h-16 w-auto object-contain"
+          <div className="mb-4 flex items-center">
+            <img
+              src="/blackpiston-logo.png"
+              alt="BlackPiston Consultancy"
+              className="h-24 w-auto object-contain"
               onError={(e) => {
-                e.currentTarget.style.display = 'none';
-                e.currentTarget.nextElementSibling?.classList.remove('hidden');
+                const target = e.currentTarget;
+                target.src = '/blackpiston-logo.svg';
+                target.onerror = () => {
+                  target.style.display = 'none';
+                  target.nextElementSibling?.classList.remove('hidden');
+                };
               }}
             />
             <div className="hidden flex items-center gap-2">

@@ -1,0 +1,111 @@
+/* BlackPiston Logo Styling - Maximum Clarity */
+
+/* Base logo styles - best quality rendering */
+img[alt="BlackPiston Consultancy"] {
+  image-rendering: auto;
+  image-rendering: smooth;
+  image-rendering: high-quality;
+  -ms-interpolation-mode: bicubic;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  filter: contrast(1.02);
+}
+
+/* Prevent logo distortion */
+img[alt="BlackPiston Consultancy"] {
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}
+
+/* Header logo responsive sizing - larger for clarity */
+header img[alt="BlackPiston Consultancy"] {
+  height: 4.5rem;
+  /* 72px desktop */
+  width: auto;
+  max-width: 220px;
+}
+
+@media (max-width: 768px) {
+  header img[alt="BlackPiston Consultancy"] {
+    height: 4rem;
+    /* 64px tablet */
+    max-width: 200px;
+  }
+}
+
+@media (max-width: 640px) {
+  header img[alt="BlackPiston Consultancy"] {
+    height: 3.5rem;
+    /* 56px mobile */
+    max-width: 170px;
+  }
+}
+
+/* Footer logo sizing */
+footer img[alt="BlackPiston Consultancy"] {
+  height: 6rem;
+  /* 96px */
+  width: auto;
+  max-width: 240px;
+}
+
+@media (max-width: 640px) {
+  footer img[alt="BlackPiston Consultancy"] {
+    height: 5rem;
+    /* 80px */
+    max-width: 200px;
+  }
+}
+
+/* Auth page logo sizing */
+.auth-logo img[alt="BlackPiston Consultancy"],
+div:has(> img[alt="BlackPiston Consultancy"]) img[alt="BlackPiston Consultancy"] {
+  height: 7rem;
+  /* 112px */
+  width: auto;
+  max-width: 280px;
+}
+
+@media (max-width: 640px) {
+
+  .auth-logo img[alt="BlackPiston Consultancy"],
+  div:has(> img[alt="BlackPiston Consultancy"]) img[alt="BlackPiston Consultancy"] {
+    height: 5.5rem;
+    /* 88px */
+    max-width: 220px;
+  }
+}
+
+/* 404 page logo sizing */
+.error-logo img[alt="BlackPiston Consultancy"] {
+  height: 8rem;
+  /* 128px */
+  width: auto;
+  max-width: 320px;
+}
+
+@media (max-width: 640px) {
+  .error-logo img[alt="BlackPiston Consultancy"] {
+    height: 6rem;
+    /* 96px */
+    max-width: 240px;
+  }
+}
+
+/* Prevent layout shift while loading */
+img[alt="BlackPiston Consultancy"] {
+  min-height: 2rem;
+}
+
+/* High DPI display optimization */
+@media (-webkit-min-device-pixel-ratio: 2),
+(min-resolution: 192dpi) {
+  img[alt="BlackPiston Consultancy"] {
+    image-rendering: auto;
+    image-rendering: smooth;
+    image-rendering: high-quality;
+  }
+}

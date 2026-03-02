@@ -1,0 +1,332 @@
+[
+    {
+        "id": "LST001",
+        "title": "2022 BMW M3 Competition",
+        "type": "car",
+        "make": "BMW",
+        "model": "M3",
+        "year": 2022,
+        "price": 72500,
+        "mileage": 12400,
+        "status": "active",
+        "sellerId": "SLR001",
+        "sellerName": "Premium Motors",
+        "vin": "WBS43AZ0XN1234567",
+        "location": "Mumbai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Automatic",
+        "color": "Alpine White",
+        "badges": [
+            "Certified",
+            "Low Mileage"
+        ],
+        "createdAt": "2026-02-15T10:30:00Z",
+        "updatedAt": "2026-02-20T14:00:00Z",
+        "views": 1245,
+        "inquiries": 34
+    },
+    {
+        "id": "LST002",
+        "title": "2023 Royal Enfield Interceptor 650",
+        "type": "bike",
+        "make": "Royal Enfield",
+        "model": "Interceptor 650",
+        "year": 2023,
+        "price": 3200,
+        "mileage": 4500,
+        "status": "pending",
+        "sellerId": "SLR002",
+        "sellerName": "MotoHub Delhi",
+        "vin": "ME3RE65XXPA123456",
+        "location": "Delhi",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Orange Crush",
+        "badges": [],
+        "createdAt": "2026-02-28T08:15:00Z",
+        "updatedAt": "2026-02-28T08:15:00Z",
+        "views": 0,
+        "inquiries": 0
+    },
+    {
+        "id": "LST003",
+        "title": "2021 Mercedes-Benz E-Class",
+        "type": "car",
+        "make": "Mercedes-Benz",
+        "model": "E-Class",
+        "year": 2021,
+        "price": 58900,
+        "mileage": 28000,
+        "status": "active",
+        "sellerId": "SLR003",
+        "sellerName": "StarLine Autos",
+        "vin": "W1KZF8DB5MA123456",
+        "location": "Bangalore",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Diesel",
+        "transmission": "Automatic",
+        "color": "Obsidian Black",
+        "badges": [
+            "Certified"
+        ],
+        "createdAt": "2026-01-10T12:00:00Z",
+        "updatedAt": "2026-02-18T09:30:00Z",
+        "views": 2340,
+        "inquiries": 67
+    },
+    {
+        "id": "LST004",
+        "title": "2024 KTM 390 Duke",
+        "type": "bike",
+        "make": "KTM",
+        "model": "390 Duke",
+        "year": 2024,
+        "price": 3100,
+        "mileage": 800,
+        "status": "active",
+        "sellerId": "SLR004",
+        "sellerName": "Speed Riders",
+        "vin": "VBKJGA402RA123456",
+        "location": "Pune",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Electronic Orange",
+        "badges": [
+            "Low Mileage"
+        ],
+        "createdAt": "2026-02-01T16:45:00Z",
+        "updatedAt": "2026-02-25T11:20:00Z",
+        "views": 890,
+        "inquiries": 19
+    },
+    {
+        "id": "LST005",
+        "title": "2020 Audi Q5 Premium Plus",
+        "type": "car",
+        "make": "Audi",
+        "model": "Q5",
+        "year": 2020,
+        "price": 45600,
+        "mileage": 35000,
+        "status": "sold",
+        "sellerId": "SLR001",
+        "sellerName": "Premium Motors",
+        "vin": "WA1BNAFY1L2123456",
+        "location": "Mumbai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Automatic",
+        "color": "Navarra Blue",
+        "badges": [],
+        "createdAt": "2025-12-05T09:00:00Z",
+        "updatedAt": "2026-02-10T16:30:00Z",
+        "views": 3100,
+        "inquiries": 89
+    },
+    {
+        "id": "LST006",
+        "title": "2023 Kawasaki Ninja ZX-10R",
+        "type": "bike",
+        "make": "Kawasaki",
+        "model": "Ninja ZX-10R",
+        "year": 2023,
+        "price": 15800,
+        "mileage": 2100,
+        "status": "flagged",
+        "sellerId": "SLR005",
+        "sellerName": "BikeWorld",
+        "vin": "JKAZXCR19PA123456",
+        "location": "Chennai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Lime Green",
+        "badges": [],
+        "flagReason": "Suspicious VIN - possible clone",
+        "createdAt": "2026-02-22T13:00:00Z",
+        "updatedAt": "2026-02-27T15:45:00Z",
+        "views": 567,
+        "inquiries": 8
+    },
+    {
+        "id": "LST007",
+        "title": "2019 Toyota Fortuner 4x4",
+        "type": "car",
+        "make": "Toyota",
+        "model": "Fortuner",
+        "year": 2019,
+        "price": 38900,
+        "mileage": 52000,
+        "status": "active",
+        "sellerId": "SLR003",
+        "sellerName": "StarLine Autos",
+        "vin": "MHFGB8GS5K0123456",
+        "location": "Hyderabad",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Diesel",
+        "transmission": "Automatic",
+        "color": "Super White",
+        "badges": [],
+        "createdAt": "2026-01-22T07:30:00Z",
+        "updatedAt": "2026-02-15T10:00:00Z",
+        "views": 1780,
+        "inquiries": 45
+    },
+    {
+        "id": "LST008",
+        "title": "2024 Harley-Davidson Street Bob",
+        "type": "bike",
+        "make": "Harley-Davidson",
+        "model": "Street Bob",
+        "year": 2024,
+        "price": 13500,
+        "mileage": 1200,
+        "status": "pending",
+        "sellerId": "SLR005",
+        "sellerName": "BikeWorld",
+        "vin": "1HD1YWK14RB123456",
+        "location": "Chennai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Vivid Black",
+        "badges": [
+            "Low Mileage"
+        ],
+        "createdAt": "2026-03-01T09:00:00Z",
+        "updatedAt": "2026-03-01T09:00:00Z",
+        "views": 0,
+        "inquiries": 0
+    },
+    {
+        "id": "LST009",
+        "title": "2022 Land Rover Defender 110",
+        "type": "car",
+        "make": "Land Rover",
+        "model": "Defender",
+        "year": 2022,
+        "price": 89500,
+        "mileage": 18000,
+        "status": "active",
+        "sellerId": "SLR001",
+        "sellerName": "Premium Motors",
+        "vin": "SALE5EEU8N2123456",
+        "location": "Mumbai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Diesel",
+        "transmission": "Automatic",
+        "color": "Gondwana Stone",
+        "badges": [
+            "Certified",
+            "Low Mileage"
+        ],
+        "createdAt": "2026-02-05T14:20:00Z",
+        "updatedAt": "2026-02-26T12:00:00Z",
+        "views": 2890,
+        "inquiries": 72
+    },
+    {
+        "id": "LST010",
+        "title": "2023 Ducati Panigale V4",
+        "type": "bike",
+        "make": "Ducati",
+        "model": "Panigale V4",
+        "year": 2023,
+        "price": 28900,
+        "mileage": 3200,
+        "status": "archived",
+        "sellerId": "SLR004",
+        "sellerName": "Speed Riders",
+        "vin": "ZDMH400AAPB123456",
+        "location": "Pune",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Ducati Red",
+        "badges": [],
+        "createdAt": "2025-11-15T10:00:00Z",
+        "updatedAt": "2026-01-20T08:00:00Z",
+        "views": 4200,
+        "inquiries": 110
+    },
+    {
+        "id": "LST011",
+        "title": "2021 Porsche 911 Carrera S",
+        "type": "car",
+        "make": "Porsche",
+        "model": "911",
+        "year": 2021,
+        "price": 125000,
+        "mileage": 9800,
+        "status": "active",
+        "sellerId": "SLR001",
+        "sellerName": "Premium Motors",
+        "vin": "WP0AB2A95MS123456",
+        "location": "Mumbai",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Automatic",
+        "color": "Guards Red",
+        "badges": [
+            "Certified",
+            "Low Mileage"
+        ],
+        "createdAt": "2026-02-08T11:30:00Z",
+        "updatedAt": "2026-02-25T16:00:00Z",
+        "views": 5600,
+        "inquiries": 142
+    },
+    {
+        "id": "LST012",
+        "title": "2023 Honda CBR 1000RR-R",
+        "type": "bike",
+        "make": "Honda",
+        "model": "CBR 1000RR-R",
+        "year": 2023,
+        "price": 21500,
+        "mileage": 1800,
+        "status": "active",
+        "sellerId": "SLR002",
+        "sellerName": "MotoHub Delhi",
+        "vin": "JH2SC77A4PM123456",
+        "location": "Delhi",
+        "images": [
+            "/placeholder.svg"
+        ],
+        "fuel": "Petrol",
+        "transmission": "Manual",
+        "color": "Grand Prix Red",
+        "badges": [
+            "Low Mileage"
+        ],
+        "createdAt": "2026-01-25T09:45:00Z",
+        "updatedAt": "2026-02-20T13:15:00Z",
+        "views": 1900,
+        "inquiries": 38
+    }
+]

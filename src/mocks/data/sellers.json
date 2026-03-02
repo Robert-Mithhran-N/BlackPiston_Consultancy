@@ -1,0 +1,93 @@
+[
+    {
+        "id": "SLR001",
+        "name": "Premium Motors",
+        "email": "info@premiummotors.com",
+        "phone": "+91 98765 43210",
+        "type": "dealer",
+        "verified": true,
+        "rating": 4.8,
+        "totalListings": 24,
+        "activeListings": 8,
+        "soldListings": 14,
+        "revenue": 485000,
+        "location": "Mumbai",
+        "joinedAt": "2024-06-15T10:00:00Z",
+        "documents": [
+            "gst_cert.pdf",
+            "dealership_license.pdf"
+        ]
+    },
+    {
+        "id": "SLR002",
+        "name": "MotoHub Delhi",
+        "email": "contact@motohubdelhi.com",
+        "phone": "+91 98765 12345",
+        "type": "dealer",
+        "verified": true,
+        "rating": 4.5,
+        "totalListings": 18,
+        "activeListings": 6,
+        "soldListings": 10,
+        "revenue": 142000,
+        "location": "Delhi",
+        "joinedAt": "2024-09-01T12:00:00Z",
+        "documents": [
+            "gst_cert.pdf"
+        ]
+    },
+    {
+        "id": "SLR003",
+        "name": "StarLine Autos",
+        "email": "sales@starlineautos.com",
+        "phone": "+91 99887 65432",
+        "type": "dealer",
+        "verified": true,
+        "rating": 4.6,
+        "totalListings": 31,
+        "activeListings": 12,
+        "soldListings": 15,
+        "revenue": 620000,
+        "location": "Bangalore",
+        "joinedAt": "2024-03-20T08:00:00Z",
+        "documents": [
+            "gst_cert.pdf",
+            "dealership_license.pdf",
+            "insurance.pdf"
+        ]
+    },
+    {
+        "id": "SLR004",
+        "name": "Speed Riders",
+        "email": "hello@speedriders.com",
+        "phone": "+91 77665 54433",
+        "type": "dealer",
+        "verified": false,
+        "rating": 4.2,
+        "totalListings": 9,
+        "activeListings": 3,
+        "soldListings": 4,
+        "revenue": 98000,
+        "location": "Pune",
+        "joinedAt": "2025-01-10T14:00:00Z",
+        "documents": [
+            "gst_cert.pdf"
+        ]
+    },
+    {
+        "id": "SLR005",
+        "name": "BikeWorld",
+        "email": "support@bikeworld.com",
+        "phone": "+91 88776 65544",
+        "type": "dealer",
+        "verified": false,
+        "rating": 3.9,
+        "totalListings": 15,
+        "activeListings": 5,
+        "soldListings": 6,
+        "revenue": 76000,
+        "location": "Chennai",
+        "joinedAt": "2025-06-05T10:00:00Z",
+        "documents": []
+    }
+]
