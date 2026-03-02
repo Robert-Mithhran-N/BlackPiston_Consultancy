@@ -1,4 +1,4 @@
-import { Heart, Search, MessageCircle, Car, User, Settings } from "lucide-react";
+import { Heart, Search, MessageCircle, Car, User, FileText } from "lucide-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import Header from "@/components/Header";
@@ -10,7 +10,7 @@ const tabs = [
   { id: "saved", label: "Saved Vehicles", icon: Heart },
   { id: "searches", label: "Saved Searches", icon: Search },
   { id: "messages", label: "Messages", icon: MessageCircle },
-  { id: "listings", label: "My Listings", icon: Car },
+  { id: "requests", label: "My Sell Requests", icon: FileText },
   { id: "profile", label: "Profile", icon: User },
 ];
 
@@ -32,11 +32,10 @@ const Dashboard = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActive(tab.id)}
-                  className={`flex items-center gap-2.5 w-full px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${
-                    active === tab.id
+                  className={`flex items-center gap-2.5 w-full px-4 py-2.5 rounded-lg text-sm font-medium transition-colors ${active === tab.id
                       ? "bg-primary/10 text-primary"
                       : "text-muted-foreground hover:text-foreground hover:bg-muted"
-                  }`}
+                    }`}
                 >
                   <tab.icon className="w-4 h-4" />
                   {tab.label}
@@ -50,9 +49,8 @@ const Dashboard = () => {
                 <button
                   key={tab.id}
                   onClick={() => setActive(tab.id)}
-                  className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${
-                    active === tab.id ? "bg-gold text-accent-foreground" : "bg-muted text-muted-foreground"
-                  }`}
+                  className={`flex items-center gap-1.5 px-3 py-2 rounded-full text-xs font-medium whitespace-nowrap transition-colors ${active === tab.id ? "bg-gold text-accent-foreground" : "bg-muted text-muted-foreground"
+                    }`}
                 >
                   <tab.icon className="w-3.5 h-3.5" />
                   {tab.label}
@@ -82,21 +80,21 @@ const Dashboard = () => {
               )}
 
               {active === "messages" && (
-                <EmptyState message="No messages yet" action="Find a vehicle" to="/search" />
+                <EmptyState message="No messages yet" action="Browse inventory" to="/search" />
               )}
 
-              {active === "listings" && (
+              {active === "requests" && (
                 <div>
                   <div className="flex items-center justify-between mb-4">
-                    <h2 className="font-heading text-xl font-bold">My Listings</h2>
+                    <h2 className="font-heading text-xl font-bold">My Sell Requests</h2>
                     <Link
-                      to="/create-listing"
+                      to="/sell-to-us"
                       className="text-sm font-medium text-gold hover:text-gold-dark transition-colors"
                     >
-                      + Create Listing
+                      + Submit a Vehicle
                     </Link>
                   </div>
-                  <EmptyState message="No listings yet" action="Create your first listing" to="/create-listing" />
+                  <EmptyState message="No sell requests yet" action="Sell a vehicle to BlackPiston" to="/sell-to-us" />
                 </div>
               )}
 

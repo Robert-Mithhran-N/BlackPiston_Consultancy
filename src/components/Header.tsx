@@ -17,9 +17,9 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-gradient-dark border-b border-gold/10">
-      <div className="container flex items-center justify-between h-16 md:h-20">
+      <div className="container flex items-center justify-between h-16 md:h-20 gap-4">
         {/* Logo */}
-        <Link to="/" className="flex items-center group">
+        <Link to="/" className="flex items-center group shrink-0">
           <img
             src="/blackpiston-logo.png"
             alt="BlackPiston Consultancy"
@@ -50,8 +50,8 @@ const Header = () => {
               key={link.to}
               to={link.to}
               className={`px-4 py-2 rounded-md text-sm font-medium transition-colors duration-200 ${location.pathname === link.to
-                  ? "text-gold bg-gold/10"
-                  : "text-primary-foreground/70 hover:text-gold hover:bg-gold/5"
+                ? "text-gold bg-gold/10"
+                : "text-primary-foreground/70 hover:text-gold hover:bg-gold/5"
                 }`}
             >
               {link.label}
@@ -83,15 +83,15 @@ const Header = () => {
             <User className="w-5 h-5" />
           </Link>
           <Link
-            to="/create-listing"
-            className="hidden md:flex items-center gap-1.5 px-4 py-2 bg-gold hover:bg-gold-dark text-accent-foreground text-sm font-semibold rounded-md transition-colors duration-200"
+            to="/sell-to-us"
+            className="hidden md:flex items-center gap-1.5 px-5 py-2.5 bg-[#C9A14A] hover:bg-[#B8913F] text-[#111111] text-sm font-semibold rounded-lg transition-all duration-200 shadow-sm shadow-[#C9A14A]/20 active:scale-[0.97]"
           >
             <Plus className="w-4 h-4" />
-            Sell Vehicle
+            Sell to Us
           </Link>
           <button
             onClick={() => setMobileOpen(!mobileOpen)}
-            className="md:hidden p-2 text-primary-foreground/70 hover:text-gold transition-colors"
+            className="md:hidden p-2.5 min-w-[44px] min-h-[44px] flex items-center justify-center text-primary-foreground/70 hover:text-gold transition-colors rounded-lg"
             aria-label="Toggle menu"
           >
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
@@ -116,9 +116,9 @@ const Header = () => {
                   key={link.to}
                   to={link.to}
                   onClick={() => setMobileOpen(false)}
-                  className={`px-4 py-3 rounded-md text-sm font-medium transition-colors ${location.pathname === link.to
-                      ? "text-gold bg-gold/10"
-                      : "text-primary-foreground/70 hover:text-gold"
+                  className={`px-4 py-3.5 min-h-[44px] flex items-center rounded-lg text-sm font-medium transition-colors ${location.pathname === link.to
+                    ? "text-gold bg-gold/10"
+                    : "text-primary-foreground/70 hover:text-gold hover:bg-gold/5"
                     }`}
                 >
                   {link.label}

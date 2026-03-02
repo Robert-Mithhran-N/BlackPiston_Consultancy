@@ -33,6 +33,8 @@ export interface Vehicle {
   type: "car" | "motorbike";
   featured: boolean;
   createdAt: string;
+  source: "admin";
+  badges: string[];
 }
 
 export const vehicles: Vehicle[] = [
@@ -55,11 +57,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Immaculate S-Class with full dealer history. Loaded with every option including Executive Rear Package, Burmester 4D sound, and MBUX augmented reality navigation.",
     specs: { engine: "4.0L V8 Biturbo", horsepower: 496, topSpeed: "155 mph", acceleration: "4.4s 0-60", drivetrain: "AWD", seats: 5 },
-    seller: { name: "Mayfair Motors", type: "dealer", rating: 4.9, reviewCount: 234, verified: true, memberSince: "2019", phone: "+44 20 7946 0958" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 20 7946 0958" },
     features: ["Panoramic Roof", "Night Vision", "Rear Entertainment", "Air Suspension", "Head-Up Display", "Massage Seats"],
     type: "car",
     featured: true,
     createdAt: "2025-12-15",
+    source: "admin",
+    badges: ["BlackPiston Certified", "Full History"],
   },
   {
     id: "2",
@@ -79,11 +83,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Stunning M4 Competition in rare Isle of Man Green. Carbon fibre roof, M Drive Professional, and Harman Kardon surround sound.",
     specs: { engine: "3.0L I6 Twin-Turbo", horsepower: 503, topSpeed: "180 mph", acceleration: "3.8s 0-60", drivetrain: "RWD", seats: 4 },
-    seller: { name: "James Carter", type: "private", rating: 4.7, reviewCount: 12, verified: true, memberSince: "2021", phone: "+44 161 496 0123" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 161 496 0123" },
     features: ["Carbon Roof", "M Sport Exhaust", "Adaptive Suspension", "Laser Lights", "Wireless Charging"],
     type: "car",
     featured: true,
     createdAt: "2025-11-20",
+    source: "admin",
+    badges: ["BlackPiston Certified"],
   },
   {
     id: "3",
@@ -103,11 +109,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Nearly new 911 Carrera S with Sport Chrono, PASM, and Bose surround. Full Porsche warranty remaining.",
     specs: { engine: "3.0L Flat-6 Twin-Turbo", horsepower: 443, topSpeed: "191 mph", acceleration: "3.3s 0-60", drivetrain: "RWD", seats: 4 },
-    seller: { name: "Porsche Centre Surrey", type: "dealer", rating: 5.0, reviewCount: 187, verified: true, memberSince: "2018", phone: "+44 1234 567890" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 1234 567890" },
     features: ["Sport Chrono", "PASM", "Sport Exhaust", "Bose Audio", "Rear Axle Steering"],
     type: "car",
     featured: true,
     createdAt: "2026-01-05",
+    source: "admin",
+    badges: ["BlackPiston Certified", "Warranty"],
   },
   {
     id: "4",
@@ -127,11 +135,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Range Rover Sport Dynamic HSE with every luxury option. Air suspension, meridian sound, 360 cameras.",
     specs: { engine: "3.0L I6 Diesel", horsepower: 346, topSpeed: "140 mph", acceleration: "5.7s 0-60", drivetrain: "AWD", seats: 5 },
-    seller: { name: "Premium Auto Group", type: "dealer", rating: 4.8, reviewCount: 156, verified: true, memberSince: "2020", phone: "+44 121 496 7890" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 121 496 7890" },
     features: ["Air Suspension", "Meridian Sound", "360 Cameras", "Heated Steering", "Pixel LED Lights"],
     type: "car",
     featured: true,
     createdAt: "2025-10-28",
+    source: "admin",
+    badges: ["BlackPiston Certified", "Full History"],
   },
   {
     id: "5",
@@ -151,11 +161,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Immaculate Panigale V4 S with Öhlins semi-active suspension, quick-shifter, and Akrapovič exhaust.",
     specs: { engine: "1103cc V4", horsepower: 214, topSpeed: "186 mph", acceleration: "2.9s 0-60", drivetrain: "Chain", seats: 2 },
-    seller: { name: "Moto Elite", type: "dealer", rating: 4.9, reviewCount: 89, verified: true, memberSince: "2017", phone: "+44 117 496 3456" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 117 496 3456" },
     features: ["Öhlins Suspension", "Quick-Shifter", "Akrapovič Exhaust", "GPS Lap Timer", "Cornering ABS"],
     type: "motorbike",
     featured: true,
     createdAt: "2026-01-10",
+    source: "admin",
+    badges: ["BlackPiston Certified"],
   },
   {
     id: "6",
@@ -175,11 +187,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Nardo Grey RS6 with carbon styling pack, sport exhaust, and dynamic package plus. Full Audi history.",
     specs: { engine: "4.0L V8 TFSI", horsepower: 591, topSpeed: "174 mph", acceleration: "3.6s 0-60", drivetrain: "AWD", seats: 5 },
-    seller: { name: "Richard Holmes", type: "private", rating: 4.5, reviewCount: 8, verified: false, memberSince: "2023", phone: "+44 113 496 7890" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 113 496 7890" },
     features: ["Carbon Styling Pack", "Sport Exhaust", "Dynamic Package Plus", "Night Vision", "B&O Sound"],
     type: "car",
     featured: false,
     createdAt: "2025-09-15",
+    source: "admin",
+    badges: ["BlackPiston Certified"],
   },
   {
     id: "7",
@@ -199,11 +213,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Latest R 1300 GS Adventure with full luggage system, Dynamic ESA, and Connectivity package.",
     specs: { engine: "1300cc Boxer Twin", horsepower: 145, topSpeed: "137 mph", acceleration: "3.5s 0-60", drivetrain: "Shaft", seats: 2 },
-    seller: { name: "Highland Moto", type: "dealer", rating: 4.7, reviewCount: 45, verified: true, memberSince: "2019", phone: "+44 131 496 2345" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 131 496 2345" },
     features: ["Full Luggage", "Dynamic ESA", "Heated Grips", "Cruise Control", "TFT Display"],
     type: "motorbike",
     featured: false,
     createdAt: "2026-02-01",
+    source: "admin",
+    badges: ["BlackPiston Certified"],
   },
   {
     id: "8",
@@ -223,11 +239,13 @@ export const vehicles: Vehicle[] = [
     ],
     description: "Model S Plaid with full self-driving capability, yoke steering, and all white interior.",
     specs: { engine: "Tri Motor Electric", horsepower: 1020, topSpeed: "200 mph", acceleration: "1.99s 0-60", drivetrain: "AWD", seats: 5 },
-    seller: { name: "EV Specialists", type: "dealer", rating: 4.6, reviewCount: 67, verified: true, memberSince: "2021", phone: "+44 1223 496 789" },
+    seller: { name: "BlackPiston Motors", type: "dealer", rating: 4.9, reviewCount: 312, verified: true, memberSince: "2020", phone: "+44 1223 496 789" },
     features: ["Full Self-Driving", "Yoke Steering", "22\" Wheels", "Gaming Computer", "Premium Audio"],
     type: "car",
     featured: false,
     createdAt: "2025-12-01",
+    source: "admin",
+    badges: ["BlackPiston Certified"],
   },
 ];
 

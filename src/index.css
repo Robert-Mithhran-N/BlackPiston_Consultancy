@@ -156,4 +156,53 @@
     transform: translateY(-4px);
     box-shadow: 0 12px 40px hsla(0, 0%, 0%, 0.15);
   }
+
+  .card-luxury {
+    @apply bg-card rounded-xl border border-border shadow-luxury transition-all duration-300;
+  }
+
+  .card-luxury:hover {
+    @apply shadow-luxury-lg;
+    transform: translateY(-2px);
+  }
+
+  .focus-gold:focus,
+  .focus-gold:focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px hsl(var(--background)), 0 0 0 4px hsl(var(--gold) / 0.5);
+  }
+
+  .btn-press:active {
+    transform: scale(0.97);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.animate-fade-in-up-delay-1 {
+  animation: fadeInUp 0.5s ease-out 0.1s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-2 {
+  animation: fadeInUp 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-up-delay-3 {
+  animation: fadeInUp 0.5s ease-out 0.3s forwards;
+  opacity: 0;
 }

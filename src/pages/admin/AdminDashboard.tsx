@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import {
-    Car, Users, ShoppingBag, DollarSign, UserPlus, Ticket,
-    CheckCircle, Flag, RefreshCcw, MessageCircle
+    Package, Users, ShoppingBag, DollarSign, UserPlus, CheckCircle,
+    Plus, Eye, ClipboardList
 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 import { KPICard } from '@/components/admin/KPICard';
 import { AdminChart } from '@/components/admin/AdminChart';
 import { ActivityFeed } from '@/components/admin/ActivityFeed';
@@ -39,9 +40,7 @@ export default function AdminDashboard() {
         load();
     }, [timeRange]);
 
-    const quickAction = (action: string) => {
-        toast.success(`${action} action triggered`, { description: 'This is a mock action. Connect to real API to execute.' });
-    };
+    const nav = useNavigate();
 
     return (
         <div className="space-y-6">
@@ -49,7 +48,7 @@ export default function AdminDashboard() {
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
                 <div>
                     <h1 className="font-heading text-2xl font-bold">Dashboard</h1>
-                    <p className="text-muted-foreground text-sm mt-0.5">Overview of your marketplace performance</p>
+                    <p className="text-muted-foreground text-sm mt-0.5">Admin inventory & acquisition overview</p>
                 </div>
                 <TimeRangeSelector value={timeRange} onChange={setTimeRange} />
             </div>
@@ -57,32 +56,40 @@ export default function AdminDashboard() {
             {/* KPI Cards */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-4">
                 <KPICard
-                    title="Active Listings"
-                    value={kpis?.activeListings ?? 0}
-                    change={12}
-                    changeLabel="last month"
-                    icon={<Car className="w-5 h-5" />}
-                    loading={loading}
-                />
-                <KPICard
-                    title="Pending Approvals"
-                    value={kpis?.pendingApprovals ?? 0}
+                    title="Pending Requests"
+                    value={kpis?.pendingRequests ?? 0}
                     change={-5}
                     changeLabel="last week"
                     icon={<ShoppingBag className="w-5 h-5" />}
                     loading={loading}
                 />
                 <KPICard
-                    title="Sold (30d)"
-                    value={kpis?.sold30d ?? 0}
-                    change={8}
-                    changeLabel="prev 30d"
+                    title="Acquisitions"
+                    value={kpis?.acquisitionsThisMonth ?? 0}
+                    change={12}
+                    changeLabel="this month"
                     icon={<CheckCircle className="w-5 h-5" />}
                     loading={loading}
                 />
                 <KPICard
+                    title="Active Inventory"
+                    value={kpis?.inventoryActive ?? 0}
+                    change={8}
+                    changeLabel="last month"
+                    icon={<Package className="w-5 h-5" />}
+                    loading={loading}
+                />
+                <KPICard
+                    title="Vehicles Sold"
+                    value={kpis?.vehiclesSold ?? 0}
+                    change={5}
+                    changeLabel="prev 30d"
+                    icon={<DollarSign className="w-5 h-5" />}
+                    loading={loading}
+                />
+                <KPICard
                     title="Revenue (30d)"
-                    value={kpis ? `$${(kpis.revenue30d / 1000).toFixed(0)}K` : '$0'}
+                    value={kpis ? `£${(kpis.revenue30d / 1000).toFixed(0)}K` : '£0'}
                     change={15}
                     changeLabel="prev 30d"
                     icon={<DollarSign className="w-5 h-5" />}
@@ -94,14 +101,6 @@ export default function AdminDashboard() {
                     change={22}
                     changeLabel="prev 30d"
                     icon={<UserPlus className="w-5 h-5" />}
-                    loading={loading}
-                />
-                <KPICard
-                    title="Open Tickets"
-                    value={kpis?.openTickets ?? 0}
-                    change={-10}
-                    changeLabel="last week"
-                    icon={<Ticket className="w-5 h-5" />}
                     loading={loading}
                 />
             </div>
@@ -138,35 +137,35 @@ export default function AdminDashboard() {
                     <h3 className="font-heading font-semibold text-base mb-2">Quick Actions</h3>
                     <Button
                         variant="outline"
-                        className="w-full justify-start gap-2 border-emerald-200 text-emerald-700 hover:bg-emerald-50 dark:border-emerald-800 dark:text-emerald-400 dark:hover:bg-emerald-950"
-                        onClick={() => quickAction('Approve listing')}
+                        className="w-full justify-start gap-2 border-[#0F3D2E]/30 text-[#0F3D2E] hover:bg-[#0F3D2E]/5"
+                        onClick={() => nav('/admin/purchase-requests')}
                     >
-                        <CheckCircle className="w-4 h-4" />
-                        Approve Pending Listing
+                        <ClipboardList className="w-4 h-4" />
+                        Review Purchase Requests
                     </Button>
                     <Button
                         variant="outline"
-                        className="w-full justify-start gap-2 border-amber-200 text-amber-700 hover:bg-amber-50 dark:border-amber-800 dark:text-amber-400 dark:hover:bg-amber-950"
-                        onClick={() => quickAction('Flag listing')}
+                        className="w-full justify-start gap-2 border-[#C9A14A]/30 text-[#C9A14A] hover:bg-[#C9A14A]/5"
+                        onClick={() => nav('/admin/inventory/create')}
                     >
-                        <Flag className="w-4 h-4" />
-                        Flag Suspicious Listing
+                        <Plus className="w-4 h-4" />
+                        Create Inventory Item
                     </Button>
                     <Button
                         variant="outline"
-                        className="w-full justify-start gap-2 border-orange-200 text-orange-700 hover:bg-orange-50 dark:border-orange-800 dark:text-orange-400 dark:hover:bg-orange-950"
-                        onClick={() => quickAction('Initiate refund')}
+                        className="w-full justify-start gap-2 border-[#0F3D2E]/30 text-[#0F3D2E] hover:bg-[#0F3D2E]/5"
+                        onClick={() => nav('/admin/inventory/drafts')}
                     >
-                        <RefreshCcw className="w-4 h-4" />
-                        Initiate Refund
+                        <Eye className="w-4 h-4" />
+                        View Draft Inventory
                     </Button>
                     <Button
                         variant="outline"
-                        className="w-full justify-start gap-2 border-blue-200 text-blue-700 hover:bg-blue-50 dark:border-blue-800 dark:text-blue-400 dark:hover:bg-blue-950"
-                        onClick={() => quickAction('Message user')}
+                        className="w-full justify-start gap-2 border-[#C9A14A]/30 text-[#C9A14A] hover:bg-[#C9A14A]/5"
+                        onClick={() => nav('/admin/inventory/published')}
                     >
-                        <MessageCircle className="w-4 h-4" />
-                        Message User
+                        <Package className="w-4 h-4" />
+                        Published Inventory
                     </Button>
                 </div>
             </div>

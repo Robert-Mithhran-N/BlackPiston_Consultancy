@@ -5,7 +5,7 @@ const Footer = () => (
     <div className="container py-12 md:py-16">
       <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
         <div className="col-span-2 md:col-span-1">
-          <div className="mb-4 flex items-center">
+          <div className="mb-4 flex items-center justify-start">
             <img
               src="/blackpiston-logo.png"
               alt="BlackPiston Consultancy"
@@ -69,7 +69,7 @@ const Footer = () => (
           </ul>
         </div>
       </div>
-      <div className="mt-12 pt-8 border-t border-gold/10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <div className="mt-12 pt-8 border-t border-[#C9A14A]/20 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-xs text-primary-foreground/40">
           © 2026 BlackPiston Consultancy. All rights reserved.
         </p>

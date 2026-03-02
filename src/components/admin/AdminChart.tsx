@@ -6,7 +6,7 @@ import {
 const CHART_COLORS = {
     primary: '#0B2E22',
     accent: '#C9A14A',
-    highlight: '#E7D3A3',
+    highlight: '#D4B06A',
     muted: '#9CA3AF',
     green: '#10B981',
     red: '#EF4444',
