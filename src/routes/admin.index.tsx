@@ -21,7 +21,7 @@ function Dashboard() {
       <div className="mb-8">
         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-gold">Overview</div>
         <h1 className="mt-2 font-display text-4xl">Good evening, Léa.</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Here's the atelier at a glance.</p>
+        <p className="mt-1 text-sm text-muted-foreground">Here's the consultancy at a glance.</p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

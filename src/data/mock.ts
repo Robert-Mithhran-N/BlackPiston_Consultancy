@@ -31,7 +31,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "noir-gt",
     name: "Noir GT Coupe",
-    brand: "Aurum",
+    brand: "Porsche",
     type: "Coupe",
     category: "car",
     price: 184500,
@@ -53,7 +53,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "midnight-saloon",
     name: "Midnight Saloon S90",
-    brand: "Vector",
+    brand: "Mercedes-Benz",
     type: "Sedan",
     category: "car",
     price: 96200,
@@ -75,7 +75,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "summit-suv",
     name: "Summit X7",
-    brand: "Vanta",
+    brand: "Land Rover",
     type: "SUV",
     category: "car",
     price: 142000,
@@ -97,7 +97,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "scarlet-spider",
     name: "Scarlet Spider RS",
-    brand: "Aurum",
+    brand: "Ferrari",
     type: "Sport",
     category: "car",
     price: 268000,
@@ -118,7 +118,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "obsidian-rr",
     name: "Obsidian RR",
-    brand: "Kuro",
+    brand: "Ducati",
     type: "Sport",
     category: "bike",
     price: 38500,
@@ -139,7 +139,7 @@ export const vehicles: Vehicle[] = [
   {
     id: "ronin-adv",
     name: "Ronin Adventure 1200",
-    brand: "Kuro",
+    brand: "Triumph",
     type: "Adventure",
     category: "bike",
     price: 24900,
@@ -159,7 +159,7 @@ export const vehicles: Vehicle[] = [
   },
 ];
 
-export const brands = ["Aurum", "Vector", "Vanta", "Kuro", "Helix", "Noctis", "Orion", "Atelier"];
+export const brands = ["Porsche", "Mercedes-Benz", "Land Rover", "Ferrari", "BMW", "Audi", "Jaguar", "Tata", "Mahindra", "Royal Enfield", "Ducati", "Triumph", "KTM"];
 
 export const stats = [
   { value: 28, suffix: "+", label: "Years of craft" },

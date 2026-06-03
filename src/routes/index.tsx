@@ -12,9 +12,9 @@ import { Reveal } from "@/components/site/PageTransition";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Aurum — Atelier Automobile" },
-      { name: "description", content: "Private atelier for the world's most considered automobiles and motorcycles." },
-      { property: "og:title", content: "Aurum — Atelier Automobile" },
+      { title: "BlackPiston Consultancy" },
+      { name: "description", content: "Private consultancy for the world's most considered automobiles and motorcycles." },
+      { property: "og:title", content: "BlackPiston Consultancy" },
       { property: "og:description", content: "Cinematic luxury vehicle showcase." },
     ],
   }),
@@ -36,7 +36,7 @@ function Home() {
       {/* HERO */}
       <section ref={heroRef} className="relative min-h-dvh">
         <motion.div style={{ scale, y }} className="absolute inset-0">
-          <img src={heroCar} alt="Aurum signature coupe" className="h-full w-full object-cover" />
+          <img src={heroCar} alt="BlackPiston signature coupe" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
           <div className="absolute inset-0 bg-gradient-to-r from-background/80 via-transparent to-background/40" />
         </motion.div>
@@ -244,7 +244,7 @@ function Home() {
         <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
           <Reveal>
             <div className="mx-auto max-w-3xl text-center">
-              <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">Why Aurum</div>
+              <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">Why BlackPiston</div>
               <h2 className="mt-3 font-display text-5xl md:text-6xl">A standard, not a service.</h2>
             </div>
           </Reveal>

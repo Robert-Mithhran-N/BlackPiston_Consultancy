@@ -1,12 +1,13 @@
 import { createFileRoute, Outlet, Link, useRouterState } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { LayoutDashboard, Car, Inbox, Plus, LogOut, Search, Bell } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
     meta: [
-      { title: "Admin — Aurum" },
-      { name: "description", content: "Aurum atelier admin console (mock)." },
+      { title: "Admin — BlackPiston" },
+      { name: "description", content: "BlackPiston Consultancy admin console." },
     ],
   }),
   component: AdminLayout,
@@ -22,17 +23,29 @@ const nav = [
 
 function AdminLayout() {
   const { location } = useRouterState();
+  const isLoginPage = location.pathname === "/admin/login";
+
+  if (isLoginPage) {
+    return (
+      <div className="min-h-dvh w-full bg-background flex items-center justify-center p-4">
+        <Outlet />
+      </div>
+    );
+  }
 
   return (
-    <div className="min-h-dvh bg-background pt-24">
+    <div className="min-h-dvh bg-background pt-8 pb-12">
       <div className="mx-auto max-w-[1500px] px-4 lg:px-8">
         <div className="grid gap-6 lg:grid-cols-[260px_1fr]">
           {/* Sidebar */}
-          <aside className="sticky top-24 h-fit rounded-3xl border border-border/50 bg-glass p-4">
-            <div className="px-3 py-2 font-mono text-[10px] uppercase tracking-[0.25em] text-gold">
-              Aurum · Admin
+          <aside className="sticky top-8 h-fit rounded-3xl border border-border/50 bg-glass p-4">
+            <div className="flex items-center gap-2.5 px-3 py-2 border-b border-border/40 pb-4 mb-4">
+              <img src={logo} alt="BlackPiston Logo" className="h-6 w-6 object-contain rounded-full" />
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-gold font-bold">
+                BlackPiston · Admin
+              </div>
             </div>
-            <nav className="mt-2 space-y-1">
+            <nav className="space-y-1">
               {nav.map((n) => {
                 const active = n.exact ? location.pathname === n.to : location.pathname.startsWith(n.to);
                 return (

@@ -2,13 +2,13 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 
 const links = [
   { to: "/", label: "Home" },
   { to: "/inventory", label: "Inventory" },
   { to: "/about", label: "Atelier" },
   { to: "/contact", label: "Contact" },
-  { to: "/admin", label: "Admin" },
 ];
 
 export function Navbar() {
@@ -25,14 +25,14 @@ export function Navbar() {
     >
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <Link to="/" className="group flex items-center gap-3">
-          <div className="relative grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-gold to-gold-soft text-background shadow-gold">
-            <span className="font-display text-lg font-bold">A</span>
+          <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/30 bg-background/50 p-0.5 shadow-gold">
+            <img src={logo} alt="BlackPiston Logo" className="h-full w-full object-contain rounded-full" />
             <div className="absolute inset-0 rounded-full ring-1 ring-gold/40 transition group-hover:ring-gold" />
           </div>
           <div className="leading-none">
-            <div className="font-display text-xl tracking-wide">AURUM</div>
-            <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-muted-foreground">
-              Atelier Automobile
+            <div className="font-display text-lg tracking-wide uppercase font-bold text-gradient-gold">BlackPiston</div>
+            <div className="font-mono text-[9px] uppercase tracking-[0.15em] text-muted-foreground">
+              Consultancy
             </div>
           </div>
         </Link>

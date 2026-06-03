@@ -9,9 +9,9 @@ import { Reveal } from "@/components/site/PageTransition";
 export const Route = createFileRoute("/inventory")({
   head: () => ({
     meta: [
-      { title: "Inventory — Aurum" },
-      { name: "description", content: "Browse the current Aurum collection of curated automobiles and motorcycles." },
-      { property: "og:title", content: "Inventory — Aurum" },
+      { title: "Inventory — BlackPiston" },
+      { name: "description", content: "Browse the current BlackPiston collection of curated automobiles and motorcycles." },
+      { property: "og:title", content: "Inventory — BlackPiston" },
       { property: "og:description", content: "Curated luxury vehicles, by appointment." },
     ],
   }),

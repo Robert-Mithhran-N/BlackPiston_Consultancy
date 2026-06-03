@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Instagram, Twitter, Youtube, MapPin, Phone, Mail } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 export function Footer() {
   return (
@@ -8,9 +9,12 @@ export function Footer() {
       <div className="relative mx-auto max-w-[1400px] px-6 py-20 lg:px-10">
         <div className="grid gap-12 lg:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <div className="font-display text-3xl">AURUM</div>
+            <div className="flex items-center gap-3">
+              <img src={logo} alt="BlackPiston Logo" className="h-10 w-10 object-contain rounded-full" />
+              <div className="font-display text-2xl tracking-wide uppercase font-bold text-gradient-gold">BlackPiston</div>
+            </div>
             <p className="mt-4 max-w-sm text-sm text-muted-foreground">
-              A private atelier curating the world's most considered automobiles and motorcycles.
+              A private consultancy curating the world's most considered automobiles and motorcycles.
               By appointment, by invitation, by design.
             </p>
             <div className="mt-6 flex gap-3">
@@ -42,7 +46,7 @@ export function Footer() {
             <ul className="space-y-3 text-sm text-muted-foreground">
               <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> 14 Avenue Montaigne, Paris</li>
               <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /> +33 1 40 00 00 00</li>
-              <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /> concierge@aurum.com</li>
+              <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /> concierge@blackpiston.com</li>
             </ul>
           </div>
 
@@ -63,7 +67,7 @@ export function Footer() {
         </div>
 
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border/40 pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
-          <div>© {new Date().getFullYear()} Aurum Atelier. All rights reserved.</div>
+          <div>© {new Date().getFullYear()} BlackPiston Consultancy. All rights reserved.</div>
           <div className="flex gap-6">
             <a href="#" className="hover:text-foreground">Privacy</a>
             <a href="#" className="hover:text-foreground">Terms</a>

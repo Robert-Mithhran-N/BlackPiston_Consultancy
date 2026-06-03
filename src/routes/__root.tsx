@@ -69,10 +69,10 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Aurum — Atelier Automobile" },
-      { name: "description", content: "A private atelier curating the world's most considered automobiles and motorcycles." },
-      { name: "author", content: "Aurum" },
-      { property: "og:title", content: "Aurum — Atelier Automobile" },
+      { title: "BlackPiston Consultancy" },
+      { name: "description", content: "A private consultancy curating the world's most considered automobiles and motorcycles." },
+      { name: "author", content: "BlackPiston" },
+      { property: "og:title", content: "BlackPiston Consultancy" },
       { property: "og:description", content: "Cinematic luxury vehicle showcase." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -134,12 +134,15 @@ function AnimatedOutlet() {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const { location } = useRouterState();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+
   return (
     <QueryClientProvider client={queryClient}>
       <ScrollProgress />
-      <Navbar />
+      {!isAdminRoute && <Navbar />}
       <AnimatedOutlet />
-      <Footer />
+      {!isAdminRoute && <Footer />}
     </QueryClientProvider>
   );
 }

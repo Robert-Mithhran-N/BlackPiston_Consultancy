@@ -5,9 +5,9 @@ import { Reveal } from "@/components/site/PageTransition";
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Aurum" },
-      { name: "description", content: "Begin a private conversation with the Aurum concierge." },
-      { property: "og:title", content: "Contact — Aurum" },
+      { title: "Contact — BlackPiston" },
+      { name: "description", content: "Begin a private conversation with the BlackPiston concierge." },
+      { property: "og:title", content: "Contact — BlackPiston" },
       { property: "og:description", content: "Private viewings, by appointment." },
     ],
   }),
@@ -38,7 +38,7 @@ function Contact() {
           {[
             { Icon: Phone, label: "Call", value: "+33 1 40 00 00 00", sub: "Mon–Sat · 09:00–20:00 CET" },
             { Icon: MessageCircle, label: "WhatsApp", value: "+33 6 00 00 00 00", sub: "Same-day reply, 7 days" },
-            { Icon: Mail, label: "Email", value: "concierge@aurum.com", sub: "Within 24 hours" },
+            { Icon: Mail, label: "Email", value: "concierge@blackpiston.com", sub: "Within 24 hours" },
           ].map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08}>
               <div className="hover-lift h-full rounded-3xl border border-border/50 bg-card p-8">

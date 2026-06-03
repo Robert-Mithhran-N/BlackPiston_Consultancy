@@ -8,9 +8,9 @@ import { stats } from "@/data/mock";
 export const Route = createFileRoute("/about")({
   head: () => ({
     meta: [
-      { title: "Atelier — Aurum" },
-      { name: "description", content: "The story, the craft, and the people behind Aurum." },
-      { property: "og:title", content: "Atelier — Aurum" },
+      { title: "Consultancy — BlackPiston" },
+      { name: "description", content: "The story, the craft, and the people behind BlackPiston." },
+      { property: "og:title", content: "Consultancy — BlackPiston" },
       { property: "og:description", content: "A heritage of curated automotive excellence." },
     ],
   }),
@@ -21,7 +21,7 @@ const timeline = [
   { year: "1997", title: "Founded in Geneva", text: "A single garage, three restored coupes." },
   { year: "2006", title: "Atelier Milano", text: "Second workshop, motorsport-grade specialists." },
   { year: "2014", title: "Concierge service", text: "Hospitality reimagined for automotive clients." },
-  { year: "2021", title: "Aurum Two-Wheels", text: "Motorcycle division opens in Tokyo." },
+  { year: "2021", title: "BlackPiston Motorcycles", text: "Motorcycle division opens in Tokyo." },
   { year: "2025", title: "The next chapter", text: "Spatial showcases and digital twins for every vehicle." },
 ];
 
@@ -37,7 +37,7 @@ function About() {
               An atelier,<br />not a dealership<span className="text-gradient-gold italic">.</span>
             </h1>
             <p className="mt-8 max-w-2xl text-lg text-muted-foreground">
-              Aurum was founded on the conviction that the world's finest machines deserve a
+              BlackPiston was founded on the conviction that the world's finest machines deserve a
               custodian — not a salesperson. Three decades on, we remain a private house,
               quietly serving a few hundred families across the world.
             </p>
@@ -48,7 +48,7 @@ function About() {
           <div className="relative mt-16 overflow-hidden">
             <motion.img
               src={showroom}
-              alt="The Aurum atelier"
+              alt="The BlackPiston atelier"
               loading="lazy"
               className="h-[60vh] w-full object-cover"
               initial={{ scale: 1.1 }}

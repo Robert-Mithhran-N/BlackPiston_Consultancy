@@ -25,7 +25,7 @@ function AddVehicle() {
 
           <div className="grid gap-4 md:grid-cols-2">
             <Field label="Name" placeholder="e.g. Noir GT Coupe" />
-            <Field label="Brand" placeholder="Aurum" />
+            <Field label="Brand" placeholder="BlackPiston" />
             <Field label="Type" placeholder="Coupe / SUV / Sport" />
             <Field label="Year" placeholder="2025" type="number" />
             <Field label="Mileage (km)" type="number" />
