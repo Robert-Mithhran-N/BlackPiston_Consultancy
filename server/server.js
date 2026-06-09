@@ -11,6 +11,7 @@ import connectDB from "./src/config/db.js";
 import authRoutes from "./src/routes/authRoutes.js";
 import vehicleRoutes from "./src/routes/vehicleRoutes.js";
 import enquiryRoutes from "./src/routes/enquiryRoutes.js";
+import { dbCheck } from "./src/middleware/dbCheck.js";
 import { notFound, errorHandler } from "./src/middleware/errorMiddleware.js";
 
 const __filename = fileURLToPath(import.meta.url);
@@ -65,6 +66,9 @@ app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 
 // Serve static uploads folder
 app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+
+// Apply database connection check on all API routes
+app.use("/api", dbCheck);
 
 // API routes
 app.use("/api/auth", authRoutes);
