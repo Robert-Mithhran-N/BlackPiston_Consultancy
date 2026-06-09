@@ -1,8 +1,8 @@
-require("dotenv").config();
-
-const express = require("express");
-const cors = require("cors");
-const connectDB = require("./config/db");
+import "dotenv/config";
+import express from "express";
+import cors from "cors";
+import connectDB from "./src/config/db.js";
+import uploadRoutes from "./src/routes/uploadRoutes.js";
 
 const app = express();
 
@@ -11,10 +11,13 @@ connectDB();
 app.use(cors());
 app.use(express.json());
 
+// Register routes
+app.use("/api/upload", uploadRoutes);
+
 app.get("/", (req, res) => {
   res.json({
     success: true,
-    message: "BlackPiston Consultancy API Running"
+    message: "BlackPiston Consultancy API Running",
   });
 });
 
