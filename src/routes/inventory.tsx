@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
-import { useMemo, useState } from "react";
-import { Search, SlidersHorizontal, LayoutGrid, List, ArrowDownUp } from "lucide-react";
-import { vehicles, type Vehicle } from "@/data/mock";
+import { useMemo, useState, useEffect } from "react";
+import { Search, SlidersHorizontal, LayoutGrid, List, ArrowDownUp, Loader2 } from "lucide-react";
+import { getVehicles, type ApiVehicle } from "@/lib/api";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { Reveal } from "@/components/site/PageTransition";
 
@@ -27,18 +27,36 @@ function Inventory() {
   const [view, setView] = useState<"grid" | "list">("grid");
   const [q, setQ] = useState("");
   const [maxPrice, setMaxPrice] = useState(300000);
+  const [vehicles, setVehicles] = useState<ApiVehicle[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchVehicles = async () => {
+      try {
+        setLoading(true);
+        const res = await getVehicles();
+        setVehicles(res.data);
+      } catch (err) {
+        console.error("Failed to fetch vehicles:", err);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchVehicles();
+  }, []);
 
   const filtered = useMemo(() => {
-    let r: Vehicle[] = [...vehicles];
+    let r: ApiVehicle[] = [...vehicles];
     if (tab === "Cars") r = r.filter((v) => v.category === "car");
     if (tab === "Bikes") r = r.filter((v) => v.category === "bike");
-    if (q) r = r.filter((v) => (v.name + v.brand).toLowerCase().includes(q.toLowerCase()));
+    if (q) r = r.filter((v) => (v.title + v.brand).toLowerCase().includes(q.toLowerCase()));
     r = r.filter((v) => v.price <= maxPrice);
     if (sort === "Price: low → high") r.sort((a, b) => a.price - b.price);
     if (sort === "Price: high → low") r.sort((a, b) => b.price - a.price);
     if (sort === "Newest") r.sort((a, b) => b.year - a.year);
+    if (sort === "Featured") r.sort((a, b) => (b.featured ? 1 : 0) - (a.featured ? 1 : 0));
     return r;
-  }, [tab, sort, q, maxPrice]);
+  }, [tab, sort, q, maxPrice, vehicles]);
 
   return (
     <div className="bg-background pt-32">
@@ -168,26 +186,32 @@ function Inventory() {
           {/* Results */}
           <div>
             <div className="mb-6 flex items-center justify-between text-xs text-muted-foreground">
-              <span>{filtered.length} vehicles</span>
+              <span>{loading ? "Loading…" : `${filtered.length} vehicles`}</span>
               <span className="font-mono uppercase tracking-widest">Updated weekly</span>
             </div>
 
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={view + tab + sort}
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.4 }}
-                className={view === "grid" ? "grid gap-6 md:grid-cols-2 xl:grid-cols-3" : "space-y-5"}
-              >
-                {view === "grid"
-                  ? filtered.map((v, i) => <VehicleCard key={v.id} v={v} index={i} />)
-                  : filtered.map((v, i) => <ListRow key={v.id} v={v} index={i} />)}
-              </motion.div>
-            </AnimatePresence>
+            {loading ? (
+              <div className="flex items-center justify-center py-20">
+                <Loader2 className="h-8 w-8 animate-spin text-gold" />
+              </div>
+            ) : (
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={view + tab + sort}
+                  initial={{ opacity: 0, y: 16 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className={view === "grid" ? "grid gap-6 md:grid-cols-2 xl:grid-cols-3" : "space-y-5"}
+                >
+                  {view === "grid"
+                    ? filtered.map((v, i) => <VehicleCard key={v._id} v={v} index={i} />)
+                    : filtered.map((v, i) => <ListRow key={v._id} v={v} index={i} />)}
+                </motion.div>
+              </AnimatePresence>
+            )}
 
-            {filtered.length === 0 && (
+            {!loading && filtered.length === 0 && (
               <div className="rounded-3xl border border-border/50 bg-glass p-12 text-center text-muted-foreground">
                 No matches. Adjust your filters.
               </div>
@@ -199,10 +223,11 @@ function Inventory() {
   );
 }
 
-function ListRow({ v, index }: { v: Vehicle; index: number }) {
+function ListRow({ v, index }: { v: ApiVehicle; index: number }) {
+  const imageUrl = v.images?.[0]?.url || "";
   return (
     <motion.a
-      href={`/vehicles/${v.id}`}
+      href={`/vehicles/${v._id}`}
       initial={{ opacity: 0, x: -20 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true }}
@@ -210,16 +235,20 @@ function ListRow({ v, index }: { v: Vehicle; index: number }) {
       className="hover-lift flex flex-col gap-6 rounded-3xl border border-border/50 bg-card p-4 md:flex-row md:items-center"
     >
       <div className="aspect-[16/10] w-full overflow-hidden rounded-2xl md:w-64">
-        <img src={v.image} alt={v.name} className="h-full w-full object-cover transition group-hover:scale-105" loading="lazy" />
+        {imageUrl ? (
+          <img src={imageUrl} alt={v.title} className="h-full w-full object-cover transition group-hover:scale-105" loading="lazy" />
+        ) : (
+          <div className="flex h-full w-full items-center justify-center bg-surface text-muted-foreground text-xs">No image</div>
+        )}
       </div>
       <div className="flex-1 px-2">
         <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">{v.brand} · {v.year}</div>
-        <h3 className="mt-1 font-display text-2xl">{v.name}</h3>
+        <h3 className="mt-1 font-display text-2xl">{v.title}</h3>
         <p className="mt-1 text-sm text-muted-foreground">{v.tagline}</p>
         <div className="mt-3 flex flex-wrap gap-2 text-[11px] text-muted-foreground">
-          <span className="rounded-full bg-surface px-3 py-1">{v.power}</span>
-          <span className="rounded-full bg-surface px-3 py-1">{v.acceleration}</span>
-          <span className="rounded-full bg-surface px-3 py-1">{v.fuel}</span>
+          {v.power && <span className="rounded-full bg-surface px-3 py-1">{v.power}</span>}
+          {v.acceleration && <span className="rounded-full bg-surface px-3 py-1">{v.acceleration}</span>}
+          <span className="rounded-full bg-surface px-3 py-1">{v.fuelType}</span>
         </div>
       </div>
       <div className="px-2 text-right md:pr-6">

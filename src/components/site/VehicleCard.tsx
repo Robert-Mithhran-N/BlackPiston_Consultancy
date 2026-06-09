@@ -1,9 +1,11 @@
 import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { ArrowUpRight, Gauge, Zap } from "lucide-react";
-import type { Vehicle } from "@/data/mock";
+import type { ApiVehicle } from "@/lib/api";
 
-export function VehicleCard({ v, index = 0 }: { v: Vehicle; index?: number }) {
+export function VehicleCard({ v, index = 0 }: { v: ApiVehicle; index?: number }) {
+  const imageUrl = v.images?.[0]?.url || "";
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -15,16 +17,22 @@ export function VehicleCard({ v, index = 0 }: { v: Vehicle; index?: number }) {
     >
       <Link
         to="/vehicles/$id"
-        params={{ id: v.id }}
+        params={{ id: v._id }}
         className="block overflow-hidden rounded-3xl border border-border/50 bg-card shadow-elegant"
       >
         <div className="relative aspect-[16/11] overflow-hidden">
-          <img
-            src={v.image}
-            alt={v.name}
-            loading="lazy"
-            className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
-          />
+          {imageUrl ? (
+            <img
+              src={imageUrl}
+              alt={v.title}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-[1.2s] ease-out group-hover:scale-110"
+            />
+          ) : (
+            <div className="flex h-full w-full items-center justify-center bg-surface">
+              <span className="font-mono text-xs text-muted-foreground">No image</span>
+            </div>
+          )}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           <div className="absolute left-4 top-4 flex gap-2">
             <span className="rounded-full bg-glass px-3 py-1 text-[10px] font-mono uppercase tracking-widest">
@@ -48,13 +56,13 @@ export function VehicleCard({ v, index = 0 }: { v: Vehicle; index?: number }) {
             <div className="font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground">
               {v.brand}
             </div>
-            <h3 className="mt-1 font-display text-2xl">{v.name}</h3>
+            <h3 className="mt-1 font-display text-2xl">{v.title}</h3>
             <p className="mt-1 text-sm text-muted-foreground">{v.tagline}</p>
           </div>
 
           <div className="flex items-center gap-4 border-t border-border/40 pt-4 text-xs text-muted-foreground">
-            <span className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-gold" /> {v.power}</span>
-            <span className="flex items-center gap-1.5"><Gauge className="h-3.5 w-3.5 text-gold" /> {v.acceleration}</span>
+            {v.power && <span className="flex items-center gap-1.5"><Zap className="h-3.5 w-3.5 text-gold" /> {v.power}</span>}
+            {v.acceleration && <span className="flex items-center gap-1.5"><Gauge className="h-3.5 w-3.5 text-gold" /> {v.acceleration}</span>}
           </div>
 
           <div className="flex items-end justify-between">

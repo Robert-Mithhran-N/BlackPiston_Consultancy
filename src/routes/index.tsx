@@ -1,10 +1,11 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { ArrowRight, ChevronDown, Sparkles, Shield, Gem, Clock } from "lucide-react";
 import heroCar from "@/assets/hero-car.jpg";
 import showroom from "@/assets/showroom.jpg";
-import { vehicles, brands, stats, testimonials } from "@/data/mock";
+import { getFeaturedVehicles, type ApiVehicle } from "@/lib/api";
+import { brands, stats, testimonials } from "@/data/mock";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { Counter } from "@/components/site/Counter";
 import { Reveal } from "@/components/site/PageTransition";
@@ -28,8 +29,22 @@ function Home() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  const cars = vehicles.filter((v) => v.category === "car").slice(0, 3);
-  const bikes = vehicles.filter((v) => v.category === "bike");
+  const [cars, setCars] = useState<ApiVehicle[]>([]);
+  const [bikes, setBikes] = useState<ApiVehicle[]>([]);
+
+  useEffect(() => {
+    const fetchFeatured = async () => {
+      try {
+        const res = await getFeaturedVehicles();
+        const all = res.data;
+        setCars(all.filter((v) => v.category === "car").slice(0, 3));
+        setBikes(all.filter((v) => v.category === "bike").slice(0, 3));
+      } catch {
+        // Silently fail — page still shows static content
+      }
+    };
+    fetchFeatured();
+  }, []);
 
   return (
     <div className="overflow-hidden bg-background">
@@ -219,8 +234,13 @@ function Home() {
             </Link>
           </div>
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {cars.map((v, i) => <VehicleCard key={v.id} v={v} index={i} />)}
+            {cars.map((v, i) => <VehicleCard key={v._id} v={v} index={i} />)}
           </div>
+          {cars.length === 0 && (
+            <div className="rounded-3xl border border-border/50 bg-glass p-12 text-center text-muted-foreground">
+              Featured vehicles coming soon.
+            </div>
+          )}
         </div>
       </section>
 
@@ -234,8 +254,13 @@ function Home() {
             </div>
           </div>
           <div className="grid gap-8 md:grid-cols-2">
-            {bikes.map((v, i) => <VehicleCard key={v.id} v={v} index={i} />)}
+            {bikes.map((v, i) => <VehicleCard key={v._id} v={v} index={i} />)}
           </div>
+          {bikes.length === 0 && (
+            <div className="rounded-3xl border border-border/50 bg-glass p-12 text-center text-muted-foreground">
+              Featured bikes coming soon.
+            </div>
+          )}
         </div>
       </section>
 

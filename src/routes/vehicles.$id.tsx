@@ -1,24 +1,27 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { useState } from "react";
-import { ArrowLeft, Calendar, Gauge, Zap, Fuel, Cog, Palette, Phone, MessageCircle, Mail } from "lucide-react";
-import { vehicles, type Vehicle } from "@/data/mock";
+import { useState, useEffect } from "react";
+import { ArrowLeft, Calendar, Gauge, Zap, Fuel, Cog, Palette, Phone, MessageCircle, Mail, Loader2 } from "lucide-react";
+import { getVehicleById, getVehicles, type ApiVehicle } from "@/lib/api";
 import { VehicleCard } from "@/components/site/VehicleCard";
 import { Reveal } from "@/components/site/PageTransition";
 
 export const Route = createFileRoute("/vehicles/$id")({
-  loader: ({ params }): Vehicle => {
-    const v = vehicles.find((x) => x.id === params.id);
-    if (!v) throw notFound();
-    return v;
+  loader: async ({ params }): Promise<ApiVehicle> => {
+    try {
+      const res = await getVehicleById(params.id);
+      return res.data;
+    } catch {
+      throw notFound();
+    }
   },
   head: ({ loaderData }) => ({
     meta: [
-      { title: `${loaderData?.name ?? "Vehicle"} — BlackPiston` },
+      { title: `${loaderData?.title ?? "Vehicle"} — BlackPiston` },
       { name: "description", content: loaderData?.tagline ?? "Premium vehicle detail." },
-      { property: "og:title", content: `${loaderData?.name ?? "Vehicle"} — BlackPiston` },
+      { property: "og:title", content: `${loaderData?.title ?? "Vehicle"} — BlackPiston` },
       { property: "og:description", content: loaderData?.tagline ?? "" },
-      { property: "og:image", content: loaderData?.image ?? "" },
+      { property: "og:image", content: loaderData?.images?.[0]?.url ?? "" },
     ],
   }),
   component: VehicleDetail,
@@ -33,9 +36,23 @@ export const Route = createFileRoute("/vehicles/$id")({
 });
 
 function VehicleDetail() {
-  const v = Route.useLoaderData() as Vehicle;
+  const v = Route.useLoaderData() as ApiVehicle;
   const [active, setActive] = useState(0);
-  const similar = vehicles.filter((x) => x.id !== v.id && x.category === v.category).slice(0, 3);
+  const [similar, setSimilar] = useState<ApiVehicle[]>([]);
+
+  useEffect(() => {
+    const fetchSimilar = async () => {
+      try {
+        const res = await getVehicles({ category: v.category, limit: "4" });
+        setSimilar(res.data.filter((x) => x._id !== v._id).slice(0, 3));
+      } catch {
+        // Silently fail
+      }
+    };
+    fetchSimilar();
+  }, [v._id, v.category]);
+
+  const gallery = v.images?.map((img) => img.url) || [];
 
   return (
     <div className="bg-background pt-28">
@@ -56,7 +73,11 @@ function VehicleDetail() {
               transition={{ duration: 0.7 }}
               className="relative aspect-[16/11] overflow-hidden rounded-[2rem] border border-border/50 shadow-elegant"
             >
-              <img src={v.gallery[active]} alt={v.name} className="h-full w-full object-cover" />
+              {gallery[active] ? (
+                <img src={gallery[active]} alt={v.title} className="h-full w-full object-cover" />
+              ) : (
+                <div className="flex h-full w-full items-center justify-center bg-surface text-muted-foreground">No image available</div>
+              )}
               <div className="absolute inset-0 bg-gradient-to-t from-card/40 to-transparent" />
               <div className="absolute left-6 top-6 rounded-full bg-glass px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-gold">
                 {v.brand} · {v.year}
@@ -67,7 +88,7 @@ function VehicleDetail() {
               <Reveal>
                 <div className="rounded-[2rem] border border-border/50 bg-glass p-8">
                   <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-gold">{v.type}</div>
-                  <h1 className="mt-3 font-display text-5xl leading-tight">{v.name}</h1>
+                  <h1 className="mt-3 font-display text-5xl leading-tight">{v.title}</h1>
                   <p className="mt-3 text-muted-foreground">{v.tagline}</p>
 
                   <div className="mt-6 border-t border-border/40 pt-6">
@@ -92,19 +113,21 @@ function VehicleDetail() {
                 </div>
               </Reveal>
 
-              <div className="grid flex-1 grid-cols-3 gap-3">
-                {v.gallery.map((g, i) => (
-                  <button
-                    key={i}
-                    onClick={() => setActive(i)}
-                    className={`relative aspect-square overflow-hidden rounded-2xl border transition ${
-                      active === i ? "border-gold ring-2 ring-gold/40" : "border-border/50 opacity-70 hover:opacity-100"
-                    }`}
-                  >
-                    <img src={g} alt="" className="h-full w-full object-cover" />
-                  </button>
-                ))}
-              </div>
+              {gallery.length > 0 && (
+                <div className="grid flex-1 grid-cols-3 gap-3">
+                  {gallery.map((g, i) => (
+                    <button
+                      key={i}
+                      onClick={() => setActive(i)}
+                      className={`relative aspect-square overflow-hidden rounded-2xl border transition ${
+                        active === i ? "border-gold ring-2 ring-gold/40" : "border-border/50 opacity-70 hover:opacity-100"
+                      }`}
+                    >
+                      <img src={g} alt="" className="h-full w-full object-cover" />
+                    </button>
+                  ))}
+                </div>
+              )}
             </div>
           </div>
         </div>
@@ -124,12 +147,12 @@ function VehicleDetail() {
               { Icon: Zap, label: "Power", value: v.power },
               { Icon: Gauge, label: "Top speed", value: v.topSpeed },
               { Icon: Gauge, label: "0–100", value: v.acceleration },
-              { Icon: Fuel, label: "Fuel", value: v.fuel },
+              { Icon: Fuel, label: "Fuel", value: v.fuelType },
               { Icon: Cog, label: "Gearbox", value: v.transmission },
               { Icon: Palette, label: "Finish", value: v.color },
               { Icon: Calendar, label: "Year", value: String(v.year) },
               { Icon: Gauge, label: "Mileage", value: `${v.mileage.toLocaleString()} km` },
-            ].map((s, i) => (
+            ].filter(s => s.value).map((s, i) => (
               <Reveal key={s.label} delay={i * 0.05}>
                 <div className="hover-lift h-full rounded-2xl border border-border/50 bg-card p-5">
                   <s.Icon className="h-4 w-4 text-gold" />
@@ -143,34 +166,38 @@ function VehicleDetail() {
       </section>
 
       {/* Features */}
-      <section className="border-y border-border/40 bg-surface/40 py-20">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <Reveal>
-            <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">Highlights</div>
-            <h2 className="mt-3 font-display text-4xl md:text-5xl">Equipped with intention.</h2>
-          </Reveal>
-          <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-            {v.features.map((f, i) => (
-              <Reveal key={f} delay={i * 0.05}>
-                <div className="rounded-2xl border border-border/50 bg-glass p-5">
-                  <div className="font-mono text-[10px] text-gold">0{i + 1}</div>
-                  <div className="mt-2 font-display text-lg">{f}</div>
-                </div>
-              </Reveal>
-            ))}
+      {v.features && v.features.length > 0 && (
+        <section className="border-y border-border/40 bg-surface/40 py-20">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+            <Reveal>
+              <div className="font-mono text-[11px] uppercase tracking-[0.3em] text-gold">Highlights</div>
+              <h2 className="mt-3 font-display text-4xl md:text-5xl">Equipped with intention.</h2>
+            </Reveal>
+            <div className="mt-10 grid gap-4 md:grid-cols-2 lg:grid-cols-4">
+              {v.features.map((f, i) => (
+                <Reveal key={f} delay={i * 0.05}>
+                  <div className="rounded-2xl border border-border/50 bg-glass p-5">
+                    <div className="font-mono text-[10px] text-gold">0{i + 1}</div>
+                    <div className="mt-2 font-display text-lg">{f}</div>
+                  </div>
+                </Reveal>
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Similar */}
-      <section className="py-24">
-        <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
-          <h2 className="mb-10 font-display text-4xl">You may also consider</h2>
-          <div className="grid gap-6 md:grid-cols-3">
-            {similar.map((s, i) => <VehicleCard key={s.id} v={s} index={i} />)}
+      {similar.length > 0 && (
+        <section className="py-24">
+          <div className="mx-auto max-w-[1400px] px-6 lg:px-10">
+            <h2 className="mb-10 font-display text-4xl">You may also consider</h2>
+            <div className="grid gap-6 md:grid-cols-3">
+              {similar.map((s, i) => <VehicleCard key={s._id} v={s} index={i} />)}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
     </div>
   );
 }

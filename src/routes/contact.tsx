@@ -1,6 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { MapPin, Phone, Mail, MessageCircle, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, MessageCircle, ArrowRight, CheckCircle, Loader2 } from "lucide-react";
 import { Reveal } from "@/components/site/PageTransition";
+import { useState } from "react";
+import { createEnquiry } from "@/lib/api";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -15,6 +17,33 @@ export const Route = createFileRoute("/contact")({
 });
 
 function Contact() {
+  const [form, setForm] = useState({ name: "", email: "", phone: "", interest: "", message: "" });
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name || !form.email || !form.message) {
+      setErrorMsg("Please fill in name, email and message.");
+      setStatus("error");
+      return;
+    }
+    setStatus("loading");
+    try {
+      await createEnquiry({
+        name: form.name,
+        email: form.email,
+        phone: form.phone,
+        message: form.interest ? `[Interest: ${form.interest}] ${form.message}` : form.message,
+      });
+      setStatus("success");
+      setForm({ name: "", email: "", phone: "", interest: "", message: "" });
+    } catch (err: any) {
+      setErrorMsg(err.message || "Failed to send. Please try again.");
+      setStatus("error");
+    }
+  };
+
   return (
     <div className="bg-background pt-32">
       <section className="relative">
@@ -59,17 +88,30 @@ function Contact() {
         <div className="mx-auto grid max-w-[1400px] gap-10 px-6 lg:grid-cols-[1.2fr_1fr] lg:px-10">
           <Reveal>
             <form
-              onSubmit={(e) => e.preventDefault()}
+              onSubmit={handleSubmit}
               className="rounded-[2rem] border border-border/50 bg-glass-strong p-8 md:p-10"
             >
               <h2 className="font-display text-3xl">Begin a conversation</h2>
               <p className="mt-2 text-sm text-muted-foreground">All fields kept strictly confidential.</p>
 
+              {status === "success" && (
+                <div className="mt-4 flex items-center gap-2 rounded-2xl bg-emerald-500/15 p-4 text-sm text-emerald-300">
+                  <CheckCircle className="h-5 w-5" />
+                  Thank you. We'll respond within 24 hours.
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="mt-4 rounded-2xl bg-red-500/15 p-4 text-sm text-red-300">
+                  {errorMsg}
+                </div>
+              )}
+
               <div className="mt-8 grid gap-5 md:grid-cols-2">
-                <Field label="Name" placeholder="Your full name" />
-                <Field label="Email" type="email" placeholder="you@domain.com" />
-                <Field label="Phone" placeholder="+1 555 000 0000" />
-                <Field label="Interest" placeholder="Model or marque" />
+                <Field label="Name" placeholder="Your full name" value={form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
+                <Field label="Email" type="email" placeholder="you@domain.com" value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} />
+                <Field label="Phone" placeholder="+1 555 000 0000" value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} />
+                <Field label="Interest" placeholder="Model or marque" value={form.interest} onChange={(e) => setForm({ ...form, interest: e.target.value })} />
               </div>
 
               <div className="mt-5">
@@ -77,13 +119,22 @@ function Contact() {
                 <textarea
                   rows={5}
                   placeholder="Tell us what you're looking for…"
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
                   className="mt-2 w-full resize-none rounded-2xl border border-border/60 bg-background/50 px-4 py-3 text-sm outline-none transition focus:border-gold focus:ring-1 focus:ring-gold/40"
                 />
               </div>
 
-              <button className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-soft px-8 py-4 text-sm font-semibold text-background shadow-gold">
-                Send privately
-                <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
+              <button
+                type="submit"
+                disabled={status === "loading"}
+                className="group mt-8 inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-gold to-gold-soft px-8 py-4 text-sm font-semibold text-background shadow-gold disabled:opacity-60"
+              >
+                {status === "loading" ? (
+                  <><Loader2 className="h-4 w-4 animate-spin" /> Sending…</>
+                ) : (
+                  <>Send privately <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" /></>
+                )}
               </button>
             </form>
           </Reveal>

@@ -1,7 +1,9 @@
-import { createFileRoute, Outlet, Link, useRouterState } from "@tanstack/react-router";
+import { createFileRoute, Outlet, Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { LayoutDashboard, Car, Inbox, Plus, LogOut, Search, Bell } from "lucide-react";
+import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
+import { isAuthenticated, getAdminInfo, clearAuth } from "@/lib/auth";
 
 export const Route = createFileRoute("/admin")({
   head: () => ({
@@ -18,12 +20,20 @@ const nav = [
   { to: "/admin/inventory", label: "Inventory", Icon: Car },
   { to: "/admin/new", label: "Add vehicle", Icon: Plus },
   { to: "/admin/enquiries", label: "Enquiries", Icon: Inbox },
-  { to: "/admin/login", label: "Login", Icon: LogOut },
 ];
 
 function AdminLayout() {
   const { location } = useRouterState();
+  const navigate = useNavigate();
   const isLoginPage = location.pathname === "/admin/login";
+  const [checked, setChecked] = useState(false);
+
+  useEffect(() => {
+    if (!isLoginPage && !isAuthenticated()) {
+      navigate({ to: "/admin/login" });
+    }
+    setChecked(true);
+  }, [isLoginPage, navigate]);
 
   if (isLoginPage) {
     return (
@@ -32,6 +42,23 @@ function AdminLayout() {
       </div>
     );
   }
+
+  if (!checked) return null;
+
+  const admin = getAdminInfo();
+  const initials = admin?.name
+    ? admin.name
+        .split(" ")
+        .map((n) => n[0])
+        .join("")
+        .toUpperCase()
+        .slice(0, 2)
+    : "BP";
+
+  const handleLogout = () => {
+    clearAuth();
+    navigate({ to: "/admin/login" });
+  };
 
   return (
     <div className="min-h-dvh bg-background pt-8 pb-12">
@@ -68,6 +95,13 @@ function AdminLayout() {
                   </Link>
                 );
               })}
+              <button
+                onClick={handleLogout}
+                className="relative flex w-full items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-foreground/70 hover:bg-surface-elevated hover:text-foreground transition"
+              >
+                <LogOut className="h-4 w-4" />
+                <span>Logout</span>
+              </button>
             </nav>
           </aside>
 
@@ -82,7 +116,7 @@ function AdminLayout() {
                 <Bell className="h-4 w-4" />
               </button>
               <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-gold to-gold-soft text-background font-display text-sm font-bold">
-                LM
+                {initials}
               </div>
             </div>
             <Outlet />
