@@ -144,6 +144,27 @@ export async function getAdminMe() {
   return apiFetch<AuthResponse>("/auth/me");
 }
 
+export async function forgotPassword(email: string) {
+  return apiFetch<{ success: boolean; message: string }>("/auth/forgot-password", {
+    method: "POST",
+    body: JSON.stringify({ email }),
+  });
+}
+
+export async function verifyOtp(email: string, otp: string) {
+  return apiFetch<{ success: boolean; message: string }>("/auth/verify-otp", {
+    method: "POST",
+    body: JSON.stringify({ email, otp }),
+  });
+}
+
+export async function resetPassword(email: string, newPassword: string) {
+  return apiFetch<{ success: boolean; message: string }>("/auth/reset-password", {
+    method: "POST",
+    body: JSON.stringify({ email, newPassword }),
+  });
+}
+
 // ──────────────────────────── Vehicles (Public) ────────────────────────────
 
 export async function getVehicles(params: Record<string, string> = {}) {

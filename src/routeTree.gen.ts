@@ -9,6 +9,8 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as InventoryRouteImport } from './routes/inventory'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AdminRouteImport } from './routes/admin'
@@ -16,11 +18,24 @@ import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AdminIndexRouteImport } from './routes/admin.index'
 import { Route as VehiclesIdRouteImport } from './routes/vehicles.$id'
+import { Route as AdminVerifyOtpRouteImport } from './routes/admin.verify-otp'
+import { Route as AdminResetPasswordRouteImport } from './routes/admin.reset-password'
 import { Route as AdminNewRouteImport } from './routes/admin.new'
 import { Route as AdminLoginRouteImport } from './routes/admin.login'
 import { Route as AdminInventoryRouteImport } from './routes/admin.inventory'
+import { Route as AdminForgotPasswordRouteImport } from './routes/admin.forgot-password'
 import { Route as AdminEnquiriesRouteImport } from './routes/admin.enquiries'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const InventoryRoute = InventoryRouteImport.update({
   id: '/inventory',
   path: '/inventory',
@@ -56,6 +71,16 @@ const VehiclesIdRoute = VehiclesIdRouteImport.update({
   path: '/vehicles/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AdminVerifyOtpRoute = AdminVerifyOtpRouteImport.update({
+  id: '/verify-otp',
+  path: '/verify-otp',
+  getParentRoute: () => AdminRoute,
+} as any)
+const AdminResetPasswordRoute = AdminResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminNewRoute = AdminNewRouteImport.update({
   id: '/new',
   path: '/new',
@@ -71,6 +96,11 @@ const AdminInventoryRoute = AdminInventoryRouteImport.update({
   path: '/inventory',
   getParentRoute: () => AdminRoute,
 } as any)
+const AdminForgotPasswordRoute = AdminForgotPasswordRouteImport.update({
+  id: '/forgot-password',
+  path: '/forgot-password',
+  getParentRoute: () => AdminRoute,
+} as any)
 const AdminEnquiriesRoute = AdminEnquiriesRouteImport.update({
   id: '/enquiries',
   path: '/enquiries',
@@ -83,10 +113,15 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/inventory': typeof InventoryRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/admin/enquiries': typeof AdminEnquiriesRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
   '/admin/inventory': typeof AdminInventoryRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
+  '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/admin/verify-otp': typeof AdminVerifyOtpRoute
   '/vehicles/$id': typeof VehiclesIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -95,10 +130,15 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/contact': typeof ContactRoute
   '/inventory': typeof InventoryRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/admin/enquiries': typeof AdminEnquiriesRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
   '/admin/inventory': typeof AdminInventoryRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
+  '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/admin/verify-otp': typeof AdminVerifyOtpRoute
   '/vehicles/$id': typeof VehiclesIdRoute
   '/admin': typeof AdminIndexRoute
 }
@@ -109,10 +149,15 @@ export interface FileRoutesById {
   '/admin': typeof AdminRouteWithChildren
   '/contact': typeof ContactRoute
   '/inventory': typeof InventoryRoute
+  '/privacy': typeof PrivacyRoute
+  '/terms': typeof TermsRoute
   '/admin/enquiries': typeof AdminEnquiriesRoute
+  '/admin/forgot-password': typeof AdminForgotPasswordRoute
   '/admin/inventory': typeof AdminInventoryRoute
   '/admin/login': typeof AdminLoginRoute
   '/admin/new': typeof AdminNewRoute
+  '/admin/reset-password': typeof AdminResetPasswordRoute
+  '/admin/verify-otp': typeof AdminVerifyOtpRoute
   '/vehicles/$id': typeof VehiclesIdRoute
   '/admin/': typeof AdminIndexRoute
 }
@@ -124,10 +169,15 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/inventory'
+    | '/privacy'
+    | '/terms'
     | '/admin/enquiries'
+    | '/admin/forgot-password'
     | '/admin/inventory'
     | '/admin/login'
     | '/admin/new'
+    | '/admin/reset-password'
+    | '/admin/verify-otp'
     | '/vehicles/$id'
     | '/admin/'
   fileRoutesByTo: FileRoutesByTo
@@ -136,10 +186,15 @@ export interface FileRouteTypes {
     | '/about'
     | '/contact'
     | '/inventory'
+    | '/privacy'
+    | '/terms'
     | '/admin/enquiries'
+    | '/admin/forgot-password'
     | '/admin/inventory'
     | '/admin/login'
     | '/admin/new'
+    | '/admin/reset-password'
+    | '/admin/verify-otp'
     | '/vehicles/$id'
     | '/admin'
   id:
@@ -149,10 +204,15 @@ export interface FileRouteTypes {
     | '/admin'
     | '/contact'
     | '/inventory'
+    | '/privacy'
+    | '/terms'
     | '/admin/enquiries'
+    | '/admin/forgot-password'
     | '/admin/inventory'
     | '/admin/login'
     | '/admin/new'
+    | '/admin/reset-password'
+    | '/admin/verify-otp'
     | '/vehicles/$id'
     | '/admin/'
   fileRoutesById: FileRoutesById
@@ -163,11 +223,27 @@ export interface RootRouteChildren {
   AdminRoute: typeof AdminRouteWithChildren
   ContactRoute: typeof ContactRoute
   InventoryRoute: typeof InventoryRoute
+  PrivacyRoute: typeof PrivacyRoute
+  TermsRoute: typeof TermsRoute
   VehiclesIdRoute: typeof VehiclesIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/inventory': {
       id: '/inventory'
       path: '/inventory'
@@ -217,6 +293,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof VehiclesIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/admin/verify-otp': {
+      id: '/admin/verify-otp'
+      path: '/verify-otp'
+      fullPath: '/admin/verify-otp'
+      preLoaderRoute: typeof AdminVerifyOtpRouteImport
+      parentRoute: typeof AdminRoute
+    }
+    '/admin/reset-password': {
+      id: '/admin/reset-password'
+      path: '/reset-password'
+      fullPath: '/admin/reset-password'
+      preLoaderRoute: typeof AdminResetPasswordRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/new': {
       id: '/admin/new'
       path: '/new'
@@ -238,6 +328,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AdminInventoryRouteImport
       parentRoute: typeof AdminRoute
     }
+    '/admin/forgot-password': {
+      id: '/admin/forgot-password'
+      path: '/forgot-password'
+      fullPath: '/admin/forgot-password'
+      preLoaderRoute: typeof AdminForgotPasswordRouteImport
+      parentRoute: typeof AdminRoute
+    }
     '/admin/enquiries': {
       id: '/admin/enquiries'
       path: '/enquiries'
@@ -250,17 +347,23 @@ declare module '@tanstack/react-router' {
 
 interface AdminRouteChildren {
   AdminEnquiriesRoute: typeof AdminEnquiriesRoute
+  AdminForgotPasswordRoute: typeof AdminForgotPasswordRoute
   AdminInventoryRoute: typeof AdminInventoryRoute
   AdminLoginRoute: typeof AdminLoginRoute
   AdminNewRoute: typeof AdminNewRoute
+  AdminResetPasswordRoute: typeof AdminResetPasswordRoute
+  AdminVerifyOtpRoute: typeof AdminVerifyOtpRoute
   AdminIndexRoute: typeof AdminIndexRoute
 }
 
 const AdminRouteChildren: AdminRouteChildren = {
   AdminEnquiriesRoute: AdminEnquiriesRoute,
+  AdminForgotPasswordRoute: AdminForgotPasswordRoute,
   AdminInventoryRoute: AdminInventoryRoute,
   AdminLoginRoute: AdminLoginRoute,
   AdminNewRoute: AdminNewRoute,
+  AdminResetPasswordRoute: AdminResetPasswordRoute,
+  AdminVerifyOtpRoute: AdminVerifyOtpRoute,
   AdminIndexRoute: AdminIndexRoute,
 }
 
@@ -272,6 +375,8 @@ const rootRouteChildren: RootRouteChildren = {
   AdminRoute: AdminRouteWithChildren,
   ContactRoute: ContactRoute,
   InventoryRoute: InventoryRoute,
+  PrivacyRoute: PrivacyRoute,
+  TermsRoute: TermsRoute,
   VehiclesIdRoute: VehiclesIdRoute,
 }
 export const routeTree = rootRouteImport

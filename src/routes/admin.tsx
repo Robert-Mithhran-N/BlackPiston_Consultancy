@@ -25,17 +25,24 @@ const nav = [
 function AdminLayout() {
   const { location } = useRouterState();
   const navigate = useNavigate();
-  const isLoginPage = location.pathname === "/admin/login";
+  
+  const publicPaths = [
+    "/admin/login",
+    "/admin/forgot-password",
+    "/admin/verify-otp",
+    "/admin/reset-password"
+  ];
+  const isPublicPage = publicPaths.includes(location.pathname);
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
-    if (!isLoginPage && !isAuthenticated()) {
+    if (!isPublicPage && !isAuthenticated()) {
       navigate({ to: "/admin/login" });
     }
     setChecked(true);
-  }, [isLoginPage, navigate]);
+  }, [isPublicPage, navigate]);
 
-  if (isLoginPage) {
+  if (isPublicPage) {
     return (
       <div className="min-h-dvh w-full bg-background flex items-center justify-center p-4">
         <Outlet />

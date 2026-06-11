@@ -59,7 +59,7 @@ function AdminLogin() {
             <label className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Email</label>
             <input
               type="email"
-              placeholder="staff@blackpiston.com"
+              placeholder="admin@blackpiston.com"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               className="mt-2 w-full rounded-xl border border-border/60 bg-background/50 px-4 py-3 text-sm outline-none focus:border-gold"
@@ -88,10 +88,15 @@ function AdminLogin() {
             "Enter console"
           )}
         </button>
-        <div className="mt-6 text-center text-xs text-muted-foreground">
-          Forgot your credentials? Contact ops@blackpiston.com
+        <div className="mt-6 text-center text-xs">
+          <Link
+            to="/admin/forgot-password"
+            className="text-gold/70 hover:text-gold transition font-medium"
+          >
+            Forgot password?
+          </Link>
         </div>
-        <Link to="/" className="mt-4 block text-center text-xs text-gold/70 hover:text-gold transition">
+        <Link to="/" className="mt-4 block text-center text-xs text-muted-foreground hover:text-foreground transition">
           Back to website
         </Link>
       </form>

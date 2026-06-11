@@ -44,9 +44,9 @@ export function Footer() {
           <div>
             <div className="mb-4 font-mono text-[11px] uppercase tracking-[0.25em] text-gold">Visit</div>
             <ul className="space-y-3 text-sm text-muted-foreground">
-              <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 text-gold" /> 14 Avenue Montaigne, Paris</li>
-              <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 text-gold" /> +33 1 40 00 00 00</li>
-              <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 text-gold" /> concierge@blackpiston.com</li>
+              <li className="flex gap-2"><MapPin className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> No-6, Melasooriyathotaam, Madukkur, Pattukottai, Tanjavur - 614903</li>
+              <li className="flex gap-2"><Phone className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> +91 93610 81244</li>
+              <li className="flex gap-2"><Mail className="mt-0.5 h-4 w-4 shrink-0 text-gold" /> blackpistonconsultancy@gmail.com</li>
             </ul>
           </div>
 
@@ -69,9 +69,9 @@ export function Footer() {
         <div className="mt-16 flex flex-col items-start justify-between gap-4 border-t border-border/40 pt-8 text-xs text-muted-foreground md:flex-row md:items-center">
           <div>© {new Date().getFullYear()} BlackPiston Consultancy. All rights reserved.</div>
           <div className="flex gap-6">
-            <a href="#" className="hover:text-foreground">Privacy</a>
-            <a href="#" className="hover:text-foreground">Terms</a>
-            <a href="#" className="hover:text-foreground">Cookies</a>
+            <Link to="/privacy" className="hover:text-foreground">Privacy</Link>
+            <Link to="/terms" className="hover:text-foreground">Terms</Link>
+            <Link to="/contact" className="hover:text-foreground">Contact</Link>
           </div>
         </div>
       </div>

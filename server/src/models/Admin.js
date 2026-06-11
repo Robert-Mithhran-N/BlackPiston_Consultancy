@@ -27,6 +27,15 @@ const adminSchema = new mongoose.Schema(
       enum: ["admin", "superadmin"],
       default: "admin",
     },
+    resetOtpHash: {
+      type: String,
+    },
+    resetOtpExpiresAt: {
+      type: Date,
+    },
+    resetOtpVerifiedAt: {
+      type: Date,
+    },
   },
   {
     timestamps: true,

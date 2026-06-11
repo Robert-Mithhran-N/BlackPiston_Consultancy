@@ -132,6 +132,8 @@ function AnimatedOutlet() {
   );
 }
 
+import { Toaster } from "@/components/ui/sonner";
+
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
   const { location } = useRouterState();
@@ -143,6 +145,7 @@ function RootComponent() {
       {!isAdminRoute && <Navbar />}
       <AnimatedOutlet />
       {!isAdminRoute && <Footer />}
+      <Toaster position="top-right" richColors />
     </QueryClientProvider>
   );
 }
