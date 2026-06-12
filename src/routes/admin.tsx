@@ -1,6 +1,6 @@
 import { createFileRoute, Outlet, Link, useRouterState, useNavigate } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { LayoutDashboard, Car, Inbox, Plus, LogOut, Search, Bell } from "lucide-react";
+import { LayoutDashboard, Car, Inbox, Plus, LogOut, Search, Bell, Sun, Moon } from "lucide-react";
 import { useEffect, useState } from "react";
 import logo from "@/assets/logo.png";
 import { isAuthenticated, getAdminInfo, clearAuth } from "@/lib/auth";
@@ -34,6 +34,30 @@ function AdminLayout() {
   ];
   const isPublicPage = publicPaths.includes(location.pathname);
   const [checked, setChecked] = useState(false);
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    try {
+      const activeTheme = localStorage.getItem("bp_theme") === "light" ? "light" : "dark";
+      setTheme(activeTheme);
+    } catch (e) {}
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("bp_theme", nextTheme);
+      const root = window.document.documentElement;
+      if (nextTheme === "light") {
+        root.classList.remove("dark");
+        root.classList.add("light");
+      } else {
+        root.classList.remove("light");
+        root.classList.add("dark");
+      }
+    } catch (e) {}
+  };
 
   useEffect(() => {
     if (!isPublicPage && !isAuthenticated()) {
@@ -121,6 +145,13 @@ function AdminLayout() {
               </div>
               <button className="grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-glass">
                 <Bell className="h-4 w-4" />
+              </button>
+              <button
+                onClick={toggleTheme}
+                className="grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-glass text-foreground hover:text-gold transition-colors focus:outline-none"
+                title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+              >
+                {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
               </button>
               <div className="grid h-10 w-10 place-items-center rounded-full bg-gradient-to-br from-gold to-gold-soft text-background font-display text-sm font-bold">
                 {initials}

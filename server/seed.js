@@ -3,18 +3,25 @@ import mongoose from "mongoose";
 import Admin from "./src/models/Admin.js";
 
 const ADMIN_NAME = "BlackPiston Admin";
-const ADMIN_EMAIL = "admin@blackpiston.com";
-const ADMIN_PASSWORD = "BlackPiston2025!";
+const ADMIN_EMAIL = "blackpistonconsultancy@gmail.com";
+const ADMIN_PASSWORD = "Robert@2510.";
 
 async function seed() {
   try {
     await mongoose.connect(process.env.MONGODB_URI);
     console.log("✅ Connected to MongoDB");
 
+    // Clean up default admin for security
+    await Admin.deleteOne({ email: "admin@blackpiston.com" });
+    console.log("🧹 Removed default admin account if existed");
+
     const existing = await Admin.findOne({ email: ADMIN_EMAIL });
 
     if (existing) {
-      console.log(`ℹ️  Admin already exists: ${ADMIN_EMAIL}`);
+      existing.password = ADMIN_PASSWORD;
+      existing.name = ADMIN_NAME;
+      await existing.save();
+      console.log(`✅ Admin updated: ${ADMIN_EMAIL} / ${ADMIN_PASSWORD}`);
     } else {
       await Admin.create({
         name: ADMIN_NAME,

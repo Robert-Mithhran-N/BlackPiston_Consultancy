@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { ArrowRight, ChevronDown, Sparkles, Shield, Gem, Clock } from "lucide-react";
+import { ArrowRight, ChevronDown, Sparkles } from "lucide-react";
+import { ShieldIcon, GemIcon, ClockIcon, SparklesIcon } from "@/components/site/RealisticIcons";
 import heroCar from "@/assets/hero-car.jpg";
 import showroom from "@/assets/showroom.jpg";
 import { getFeaturedVehicles, type ApiVehicle } from "@/lib/api";
@@ -275,15 +276,15 @@ function Home() {
           </Reveal>
           <div className="mt-16 grid gap-6 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { i: Shield, t: "Vetted provenance", d: "Each vehicle independently authenticated and historied." },
-              { i: Gem, t: "Bespoke restoration", d: "In-atelier ateliers for paint, leather and mechanicals." },
-              { i: Clock, t: "Concierge delivery", d: "White-glove logistics, anywhere in the world." },
-              { i: Sparkles, t: "Lifetime stewardship", d: "Ongoing care, valuation and resale support." },
+              { i: ShieldIcon, t: "Vetted provenance", d: "Each vehicle independently authenticated and historied." },
+              { i: GemIcon, t: "Bespoke restoration", d: "In-atelier ateliers for paint, leather and mechanicals." },
+              { i: ClockIcon, t: "Concierge delivery", d: "White-glove logistics, anywhere in the world." },
+              { i: SparklesIcon, t: "Lifetime stewardship", d: "Ongoing care, valuation and resale support." },
             ].map((f, i) => (
               <Reveal key={f.t} delay={i * 0.08}>
                 <div className="hover-lift group h-full rounded-3xl border border-border/50 bg-glass p-7">
-                  <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-gold to-gold-soft text-background">
-                    <f.i className="h-5 w-5" />
+                  <div className="grid h-16 w-16 place-items-center rounded-2xl border border-gold/15 bg-gradient-to-b from-surface-elevated/80 to-background/95 shadow-elegant group-hover:border-gold/45 group-hover:shadow-gold/5 transition-all duration-300">
+                    <f.i className="h-10 w-10 transition-transform duration-500 group-hover:scale-110" />
                   </div>
                   <h3 className="mt-6 font-display text-2xl">{f.t}</h3>
                   <p className="mt-2 text-sm text-muted-foreground">{f.d}</p>

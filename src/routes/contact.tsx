@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { MapPin, Phone, Mail, MessageCircle, ArrowRight, CheckCircle, Loader2, Clock, Globe } from "lucide-react";
+import { PhoneIcon, ChatIcon, MailIcon, MapPinIcon } from "@/components/site/RealisticIcons";
 import { Reveal } from "@/components/site/PageTransition";
 import { useState } from "react";
 import { createEnquiry } from "@/lib/api";
@@ -65,24 +66,24 @@ function Contact() {
       <section className="py-20">
         <div className="mx-auto grid max-w-[1400px] gap-6 px-6 md:grid-cols-2 lg:grid-cols-4 lg:px-10">
           {[
-            { Icon: Phone, label: "Call Us", value: "+91 93610 81244", sub: "Mon–Sat · 09:00–20:00 IST", href: "tel:+919361081244" },
-            { Icon: MessageCircle, label: "WhatsApp", value: "+91 93610 81244", sub: "Same-day reply, 7 days", href: "https://wa.me/919361081244" },
-            { Icon: Mail, label: "Email", value: "blackpistonconsultancy@gmail.com", sub: "Within 24 hours", href: "mailto:blackpistonconsultancy@gmail.com" },
-            { Icon: MapPin, label: "Visit Us", value: "Madukkur, Pattukottai", sub: "Tanjavur - 614903", href: "https://maps.google.com/?q=Madukkur,Pattukottai,Tanjavur,614903" },
+            { Icon: PhoneIcon, label: "Direct Atelier Line", value: "+91 93610 81244", sub: "Mon–Sat · 09:00–20:00 IST", href: "tel:+919361081244" },
+            { Icon: ChatIcon, label: "Atelier Concierge", value: "+91 93610 81244", sub: "Secure digital chat, 7 days", href: "https://wa.me/919361081244" },
+            { Icon: MailIcon, label: "Private Correspondence", value: "blackpistonconsultancy@gmail.com", sub: "Response within 24 hours", href: "mailto:blackpistonconsultancy@gmail.com" },
+            { Icon: MapPinIcon, label: "Atelier Presence", value: "Madukkur, Pattukottai", sub: "Tanjavur, Tamil Nadu · By Appointment", href: "https://maps.google.com/?q=Madukkur,Pattukottai,Tanjavur,614903" },
           ].map((c, i) => (
             <Reveal key={c.label} delay={i * 0.08}>
               <a
                 href={c.href}
                 target={c.href.startsWith("http") ? "_blank" : undefined}
                 rel={c.href.startsWith("http") ? "noopener noreferrer" : undefined}
-                className="block hover-lift h-full rounded-3xl border border-border/50 bg-card p-8 transition-colors hover:border-gold/40"
+                className="block hover-lift group h-full rounded-3xl border border-border/50 bg-card p-8 transition-colors hover:border-gold/40"
               >
-                <div className="grid h-12 w-12 place-items-center rounded-2xl bg-gradient-to-br from-gold to-gold-soft text-background">
-                  <c.Icon className="h-5 w-5" />
+                <div className="grid h-16 w-16 place-items-center rounded-2xl border border-gold/15 bg-gradient-to-b from-surface-elevated/80 to-background/95 shadow-elegant group-hover:border-gold/45 group-hover:shadow-gold/5 transition-all duration-300">
+                  <c.Icon className="h-10 w-10 transition-transform duration-500 group-hover:scale-110" />
                 </div>
-                <div className="mt-6 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">{c.label}</div>
-                <div className="mt-1 font-display text-xl lg:text-2xl break-all">{c.value}</div>
-                <div className="mt-2 text-sm text-muted-foreground">{c.sub}</div>
+                <div className="mt-6 font-mono text-[9px] uppercase tracking-[0.2em] text-muted-foreground">{c.label}</div>
+                <div className="mt-2.5 font-sans font-medium tracking-wide text-foreground group-hover:text-gold transition-colors duration-300 text-[15px] sm:text-base lg:text-[16px] xl:text-[17px] break-words">{c.value}</div>
+                <div className="mt-2 text-xs text-muted-foreground/80 font-sans tracking-wide">{c.sub}</div>
               </a>
             </Reveal>
           ))}
