@@ -40,10 +40,14 @@
   --color-crimson: var(--crimson);
   --color-surface: var(--surface);
   --color-surface-elevated: var(--surface-elevated);
+  --color-header-bg: var(--header-bg);
 }
 
 :root {
   --radius: 0.75rem;
+
+  /* Header background */
+  --header-bg: oklch(0.12 0.008 60);
 
   /* Luxury dark base */
   --background: oklch(0.12 0.008 60);
@@ -97,6 +101,7 @@
 
 /* Luxury Cream Light Mode overrides (Unlayered) */
 .light {
+  --header-bg: oklch(1 0 0);           /* Pure white header background */
   --background: oklch(0.96 0.015 75);  /* Warm cream base */
   --foreground: oklch(0.12 0.006 60);  /* Deep charcoal for maximum contrast */
 

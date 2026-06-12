@@ -19,12 +19,11 @@ export function Navbar() {
   const { location } = useRouterState();
 
   return (
-    <motion.header
+    <header
       className="fixed inset-x-0 top-0 z-50"
     >
-      <motion.div
-        style={{ opacity: bgOpacity, backdropFilter: blur }}
-        className="absolute inset-0 -z-10 bg-background/85 border-b border-border/40"
+      <div
+        className="absolute inset-0 -z-10 bg-header-bg border-b border-border/40"
       />
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <Link to="/" className="group flex items-center gap-3">
@@ -108,6 +107,6 @@ export function Navbar() {
           </motion.div>
         )}
       </AnimatePresence>
-    </motion.header>
+    </header>
   );
 }
