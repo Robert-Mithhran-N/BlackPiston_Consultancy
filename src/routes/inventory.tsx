@@ -26,7 +26,7 @@ function Inventory() {
   const [sort, setSort] = useState<(typeof sorts)[number]>("Featured");
   const [view, setView] = useState<"grid" | "list">("grid");
   const [q, setQ] = useState("");
-  const [maxPrice, setMaxPrice] = useState(300000);
+  const [maxPrice, setMaxPrice] = useState(50000000);
   const [vehicles, setVehicles] = useState<ApiVehicle[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -151,13 +151,13 @@ function Inventory() {
             <div className="rounded-3xl border border-border/50 bg-glass p-6">
               <div className="text-xs font-medium">Max price</div>
               <div className="mt-1 font-display text-2xl text-gradient-gold">
-                ${maxPrice.toLocaleString()}
+                ₹{maxPrice.toLocaleString('en-IN')}
               </div>
               <input
                 type="range"
-                min={20000}
-                max={300000}
-                step={5000}
+                min={1000000}
+                max={50000000}
+                step={1000000}
                 value={maxPrice}
                 onChange={(e) => setMaxPrice(Number(e.target.value))}
                 className="mt-4 w-full accent-[oklch(0.78_0.13_80)]"
@@ -253,7 +253,7 @@ function ListRow({ v, index }: { v: ApiVehicle; index: number }) {
       </div>
       <div className="px-2 text-right md:pr-6">
         <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">From</div>
-        <div className="font-display text-3xl text-gradient-gold">${v.price.toLocaleString()}</div>
+        <div className="font-display text-3xl text-gradient-gold">₹{v.price.toLocaleString('en-IN')}</div>
       </div>
     </motion.a>
   );

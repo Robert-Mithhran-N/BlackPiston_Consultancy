@@ -5,7 +5,7 @@ export function Counter({ to, suffix = "" }: { to: number; suffix?: string }) {
   const ref = useRef<HTMLSpanElement>(null);
   const inView = useInView(ref, { once: true, margin: "-60px" });
   const mv = useMotionValue(0);
-  const rounded = useTransform(mv, (v) => Math.round(v).toLocaleString());
+  const rounded = useTransform(mv, (v) => Math.round(v).toLocaleString('en-IN'));
 
   useEffect(() => {
     if (!inView) return;

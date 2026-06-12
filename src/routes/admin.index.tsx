@@ -1,6 +1,6 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
-import { TrendingUp, Eye, DollarSign, Users, Loader2 } from "lucide-react";
+import { TrendingUp, Eye, IndianRupee, Users, Loader2 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getAdminVehicles, getEnquiries, type ApiVehicle, type ApiEnquiry } from "@/lib/api";
 import { getAdminInfo } from "@/lib/auth";
@@ -39,7 +39,7 @@ function Dashboard() {
   const newEnquiries = enquiries.filter((e) => e.status === "New").length;
 
   const kpis = [
-    { Icon: DollarSign, label: "Portfolio value", value: totalValue, prefix: "$" },
+    { Icon: IndianRupee, label: "Portfolio value", value: totalValue, prefix: "₹" },
     { Icon: Eye, label: "Active listings", value: activeCount },
     { Icon: Users, label: "Enquiries", value: enquiries.length },
     { Icon: TrendingUp, label: "New enquiries", value: newEnquiries },
@@ -125,7 +125,7 @@ function Dashboard() {
                       )}
                       <div className="flex-1 truncate">
                         <div className="truncate text-sm font-medium">{v.title}</div>
-                        <div className="text-xs text-muted-foreground">${v.price.toLocaleString()}</div>
+                        <div className="text-xs text-muted-foreground">₹{v.price.toLocaleString('en-IN')}</div>
                       </div>
                     </div>
                   );

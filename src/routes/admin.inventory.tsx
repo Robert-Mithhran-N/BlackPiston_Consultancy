@@ -106,7 +106,7 @@ function AdminInventory() {
                     </td>
                     <td className="px-5 py-4 text-muted-foreground">{v.type}</td>
                     <td className="px-5 py-4 text-muted-foreground">{v.year}</td>
-                    <td className="px-5 py-4 font-display text-base text-gold">${v.price.toLocaleString()}</td>
+                    <td className="px-5 py-4 font-display text-base text-gold">₹{v.price.toLocaleString('en-IN')}</td>
                     <td className="px-5 py-4">
                       <span className={`rounded-full px-3 py-1 text-[10px] font-mono uppercase ${
                         v.isActive

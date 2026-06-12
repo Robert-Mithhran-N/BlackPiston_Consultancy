@@ -93,7 +93,7 @@ function VehicleDetail() {
 
                   <div className="mt-6 border-t border-border/40 pt-6">
                     <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Price on request, from</div>
-                    <div className="font-display text-5xl text-gradient-gold">${v.price.toLocaleString()}</div>
+                    <div className="font-display text-5xl text-gradient-gold">₹{v.price.toLocaleString('en-IN')}</div>
                   </div>
 
                   <div className="mt-6 grid grid-cols-3 gap-3">

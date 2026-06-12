@@ -188,7 +188,7 @@ function AddVehicle() {
             </div>
             <Field label="Year" placeholder="2025" type="number" value={form.year} onChange={set("year")} />
             <Field label="Mileage (km)" type="number" value={form.mileage} onChange={set("mileage")} />
-            <Field label="Price (USD)" type="number" value={form.price} onChange={set("price")} />
+            <Field label="Price (INR)" type="number" value={form.price} onChange={set("price")} />
             <Field label="Power" placeholder="612 hp" value={form.power} onChange={set("power")} />
             <Field label="0–100" placeholder="2.9s" value={form.acceleration} onChange={set("acceleration")} />
             <Field label="Top Speed" placeholder="330 km/h" value={form.topSpeed} onChange={set("topSpeed")} />

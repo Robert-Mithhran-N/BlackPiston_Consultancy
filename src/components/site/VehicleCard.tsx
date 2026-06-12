@@ -69,7 +69,7 @@ export function VehicleCard({ v, index = 0 }: { v: ApiVehicle; index?: number })
             <div>
               <div className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">From</div>
               <div className="font-display text-2xl text-gradient-gold">
-                ${v.price.toLocaleString()}
+                ₹{v.price.toLocaleString('en-IN')}
               </div>
             </div>
             <span className="text-xs text-foreground/70 underline-offset-4 group-hover:text-gold group-hover:underline">
