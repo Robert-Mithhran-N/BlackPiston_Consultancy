@@ -14,15 +14,18 @@ const links = [
 export function Navbar() {
   const [open, setOpen] = useState(false);
   const { scrollY } = useScroll();
-  const bg = useTransform(scrollY, [0, 80], ["oklch(0.12 0.008 60 / 0)", "oklch(0.1 0.008 60 / 0.85)"]);
+  const bgOpacity = useTransform(scrollY, [0, 80], [0, 0.85]);
   const blur = useTransform(scrollY, [0, 80], ["blur(0px)", "blur(18px)"]);
   const { location } = useRouterState();
 
   return (
     <motion.header
-      style={{ backgroundColor: bg, backdropFilter: blur }}
-      className="fixed inset-x-0 top-0 z-50 border-b border-border/40"
+      className="fixed inset-x-0 top-0 z-50"
     >
+      <motion.div
+        style={{ opacity: bgOpacity, backdropFilter: blur }}
+        className="absolute inset-0 -z-10 bg-background/85 border-b border-border/40"
+      />
       <div className="mx-auto flex h-20 max-w-[1400px] items-center justify-between px-6 lg:px-10">
         <Link to="/" className="group flex items-center gap-3">
           <div className="relative h-10 w-10 overflow-hidden rounded-full border border-gold/30 bg-background/50 p-0.5 shadow-gold">
