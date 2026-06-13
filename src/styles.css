@@ -51,15 +51,15 @@
 
   /* Luxury dark base */
   --background: oklch(0.12 0.008 60);
-  --foreground: oklch(0.97 0.005 80);
+  --foreground: oklch(0.995 0.002 80);
 
   --surface: oklch(0.16 0.01 60);
   --surface-elevated: oklch(0.2 0.012 60);
 
   --card: oklch(0.16 0.01 60);
-  --card-foreground: oklch(0.97 0.005 80);
+  --card-foreground: oklch(0.995 0.002 80);
   --popover: oklch(0.16 0.01 60);
-  --popover-foreground: oklch(0.97 0.005 80);
+  --popover-foreground: oklch(0.995 0.002 80);
 
   /* Gold accent */
   --primary: oklch(0.78 0.13 80);
@@ -68,13 +68,13 @@
   --gold-soft: oklch(0.85 0.08 85);
 
   --secondary: oklch(0.22 0.012 60);
-  --secondary-foreground: oklch(0.97 0.005 80);
+  --secondary-foreground: oklch(0.995 0.002 80);
   --muted: oklch(0.2 0.01 60);
-  --muted-foreground: oklch(0.65 0.015 70);
+  --muted-foreground: oklch(0.82 0.01 70);
   --accent: oklch(0.78 0.13 80);
   --accent-foreground: oklch(0.12 0.008 60);
   --destructive: oklch(0.55 0.22 22);
-  --destructive-foreground: oklch(0.97 0.005 80);
+  --destructive-foreground: oklch(0.995 0.002 80);
   --crimson: oklch(0.52 0.21 22);
 
   --border: oklch(0.28 0.012 70 / 0.4);
@@ -103,26 +103,26 @@
 .light {
   --header-bg: oklch(1 0 0);           /* Pure white header background */
   --background: oklch(0.96 0.015 75);  /* Warm cream base */
-  --foreground: oklch(0.12 0.006 60);  /* Deep charcoal for maximum contrast */
+  --foreground: oklch(0.04 0.002 60);  /* Ultra deep charcoal/black for maximum visibility */
 
   --surface: oklch(0.94 0.018 75);     /* Slightly deeper cream for sections */
   --surface-elevated: oklch(0.91 0.02 74); /* Warm toasted cream for elevated surfaces */
 
   --card: oklch(0.97 0.015 75);        /* Cream card backgrounds */
-  --card-foreground: oklch(0.12 0.006 60);
+  --card-foreground: oklch(0.04 0.002 60);
   --popover: oklch(0.97 0.015 75);
-  --popover-foreground: oklch(0.12 0.006 60);
+  --popover-foreground: oklch(0.04 0.002 60);
 
   /* Gold accent - rich gold for high contrast on cream backgrounds */
   --primary: oklch(0.62 0.11 75);
-  --primary-foreground: oklch(0.12 0.006 60);
+  --primary-foreground: oklch(0.04 0.002 60);
   --gold: oklch(0.62 0.11 75);
   --gold-soft: oklch(0.7 0.09 78);
 
   --secondary: oklch(0.93 0.016 75);
-  --secondary-foreground: oklch(0.12 0.006 60);
+  --secondary-foreground: oklch(0.04 0.002 60);
   --muted: oklch(0.93 0.016 75);
-  --muted-foreground: oklch(0.38 0.006 60); /* Darker grey for full legibility */
+  --muted-foreground: oklch(0.22 0.004 60); /* Much darker grey for sharp readability */
 
   --border: oklch(0.12 0.006 60 / 0.15);
   --input: oklch(0.97 0.015 75);       /* Cream input fields */
@@ -136,7 +136,7 @@
   --gradient-gold: linear-gradient(135deg, oklch(0.7 0.09 78), oklch(0.58 0.12 73));
   --gradient-dark: linear-gradient(180deg, oklch(0.97 0.015 75), oklch(0.94 0.018 75));
   --gradient-radial-gold: radial-gradient(circle at 50% 0%, oklch(0.62 0.11 75 / 0.1), transparent 60%);
-  --gradient-hero: linear-gradient(180deg, oklch(0.96 0.015 75 / 0) 0%, oklch(0.96 0.015 75 / 0.8) 60%, oklch(0.96 0.015 75) 100%);
+  --gradient-hero: linear-gradient(180deg, oklch(0.12 0.008 60 / 0) 0%, oklch(0.12 0.008 60 / 0.55) 60%, oklch(0.12 0.008 60) 100%);
   --gradient-glass: linear-gradient(135deg, oklch(0.97 0.015 75 / 0.8), oklch(0.97 0.015 75 / 0.55)); /* Frosted cream glass */
 
   /* Shadows for light mode */
@@ -153,33 +153,10 @@
 }
 
 .light .text-background {
-  color: oklch(0.12 0.006 60) !important; /* Force text color on gold buttons (which use text-background) to be dark charcoal */
+  color: oklch(0.04 0.002 60) !important; /* Force text color on gold buttons to be ultra dark */
 }
 
 /* --- Light mode: keep images, logos & hero banner vivid (no cream tint) --- */
-
-/* Hero section: use dark cinematic gradient so the hero photo stays vivid */
-.light section:first-child .bg-\[var\(--gradient-hero\)\] {
-  background: linear-gradient(180deg, oklch(0.12 0.008 60 / 0) 0%, oklch(0.12 0.008 60 / 0.55) 60%, oklch(0.12 0.008 60 / 0.85) 100%) !important;
-}
-
-/* Hero side gradient: keep dark for cinematic feel over hero image */
-.light section:first-child .from-background\/80 {
-  --tw-gradient-from: oklch(0.12 0.008 60 / 0.7);
-}
-.light section:first-child .to-background\/40 {
-  --tw-gradient-to: oklch(0.12 0.008 60 / 0.35);
-}
-
-/* Image overlay gradients: use neutral dark so images stay vivid, not cream-tinted */
-.light .absolute.from-card,
-.light .absolute.from-card\/80,
-.light .absolute.from-card\/40 {
-  --tw-gradient-from: oklch(0.12 0.008 60 / 0.8);
-}
-.light .absolute.via-card\/20 {
-  --tw-gradient-via: oklch(0.12 0.008 60 / 0.15);
-}
 
 /* Images: ensure no color/filter distortion */
 .light img {

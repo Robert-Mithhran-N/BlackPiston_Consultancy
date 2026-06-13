@@ -1,7 +1,7 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { useState } from "react";
+import { Menu, X, Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 import logo from "@/assets/logo.png";
 
 const links = [
@@ -17,6 +17,30 @@ export function Navbar() {
   const bgOpacity = useTransform(scrollY, [0, 80], [0, 0.85]);
   const blur = useTransform(scrollY, [0, 80], ["blur(0px)", "blur(18px)"]);
   const { location } = useRouterState();
+  const [theme, setTheme] = useState<"dark" | "light">("dark");
+
+  useEffect(() => {
+    try {
+      const activeTheme = localStorage.getItem("bp_theme") === "light" ? "light" : "dark";
+      setTheme(activeTheme);
+    } catch (e) {}
+  }, []);
+
+  const toggleTheme = () => {
+    const nextTheme = theme === "dark" ? "light" : "dark";
+    setTheme(nextTheme);
+    try {
+      localStorage.setItem("bp_theme", nextTheme);
+      const root = window.document.documentElement;
+      if (nextTheme === "light") {
+        root.classList.remove("dark");
+        root.classList.add("light");
+      } else {
+        root.classList.remove("light");
+        root.classList.add("dark");
+      }
+    } catch (e) {}
+  };
 
   return (
     <header
@@ -60,6 +84,13 @@ export function Navbar() {
         </nav>
 
         <div className="hidden items-center gap-3 lg:flex">
+          <button
+            onClick={toggleTheme}
+            className="grid h-10 w-10 place-items-center rounded-full border border-border/60 bg-glass text-foreground hover:text-gold transition-colors focus:outline-none"
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
+          </button>
           <Link
             to="/contact"
             className="rounded-full bg-gradient-to-r from-gold to-gold-soft px-5 py-2.5 text-sm font-semibold text-background shadow-gold transition hover:brightness-110"
@@ -68,13 +99,22 @@ export function Navbar() {
           </Link>
         </div>
 
-        <button
-          aria-label="Toggle menu"
-          onClick={() => setOpen((v) => !v)}
-          className="grid h-11 w-11 place-items-center rounded-full border border-border/60 bg-glass lg:hidden"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        <div className="flex items-center gap-2 lg:hidden">
+          <button
+            onClick={toggleTheme}
+            className="grid h-11 w-11 place-items-center rounded-full border border-border/60 bg-glass text-foreground hover:text-gold transition-colors focus:outline-none"
+            title={`Switch to ${theme === "dark" ? "light" : "dark"} theme`}
+          >
+            {theme === "dark" ? <Sun className="h-4.5 w-4.5" /> : <Moon className="h-4.5 w-4.5" />}
+          </button>
+          <button
+            aria-label="Toggle menu"
+            onClick={() => setOpen((v) => !v)}
+            className="grid h-11 w-11 place-items-center rounded-full border border-border/60 bg-glass"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
