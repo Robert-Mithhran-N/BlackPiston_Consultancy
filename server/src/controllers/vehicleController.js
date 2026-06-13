@@ -277,7 +277,24 @@ export const createVehicle = async (req, res) => {
 
     res.status(201).json({ success: true, data: vehicle });
   } catch (error) {
-    res.status(400).json({ success: false, message: error.message });
+    console.error("[createVehicle] Error:", error.message, error.stack);
+
+    // Mongoose validation error — return field-level messages
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map((e) => e.message).join(", ");
+      return res.status(400).json({ success: false, message: messages });
+    }
+
+    // Duplicate key (e.g. slug collision)
+    if (error.code === 11000) {
+      const field = Object.keys(error.keyValue).join(", ");
+      return res.status(409).json({
+        success: false,
+        message: `A vehicle with that ${field} already exists. Please use a different title.`,
+      });
+    }
+
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -330,7 +347,22 @@ export const updateVehicle = async (req, res) => {
 
     res.status(200).json({ success: true, data: updatedVehicle });
   } catch (error) {
-    res.status(400).json({ success: false, message: error.message });
+    console.error("[updateVehicle] Error:", error.message, error.stack);
+
+    if (error.name === "ValidationError") {
+      const messages = Object.values(error.errors).map((e) => e.message).join(", ");
+      return res.status(400).json({ success: false, message: messages });
+    }
+
+    if (error.code === 11000) {
+      const field = Object.keys(error.keyValue).join(", ");
+      return res.status(409).json({
+        success: false,
+        message: `A vehicle with that ${field} already exists. Please use a different title.`,
+      });
+    }
+
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 

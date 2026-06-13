@@ -50,11 +50,11 @@ function Home() {
   return (
     <div className="overflow-hidden bg-background">
       {/* HERO */}
-      <section ref={heroRef} className="relative min-h-dvh text-white">
+      <section ref={heroRef} className="relative min-h-dvh text-foreground">
         <motion.div style={{ scale, y }} className="absolute inset-0">
           <img src={heroCar} alt="BlackPiston signature coupe" className="h-full w-full object-cover" />
           <div className="absolute inset-0 bg-[var(--gradient-hero)]" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/35" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-transparent to-black/35 dark:block hidden" />
         </motion.div>
 
         <div className="pointer-events-none absolute inset-0 bg-grid opacity-20 mask-fade-b" />
@@ -76,7 +76,7 @@ function Home() {
                 initial={{ opacity: 0, y: 40 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.3 + i * 0.03 }}
-                className="inline-block text-white"
+                className="inline-block text-foreground"
               >
                 {c === " " ? "\u00A0" : c}
               </motion.span>
@@ -96,7 +96,7 @@ function Home() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 1 }}
-            className="mt-8 max-w-xl text-base text-slate-300 md:text-lg"
+            className="mt-8 max-w-xl text-base text-muted-foreground md:text-lg"
           >
             A private atelier curating limited-edition automobiles and motorcycles —
             sourced, restored and delivered with hotel-grade hospitality.
@@ -117,7 +117,7 @@ function Home() {
             </Link>
             <Link
               to="/contact"
-              className="inline-flex items-center gap-2 rounded-full border border-border bg-glass px-8 py-4 text-sm font-semibold text-white transition hover:border-gold hover:text-gold"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-glass px-8 py-4 text-sm font-semibold text-foreground transition hover:border-gold hover:text-gold"
             >
               Private viewing
             </Link>
@@ -135,7 +135,7 @@ function Home() {
                 <div className="font-display text-3xl text-gradient-gold md:text-4xl">
                   <Counter to={s.value} suffix={s.suffix} />
                 </div>
-                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-slate-400">
+                <div className="mt-1 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground">
                   {s.label}
                 </div>
               </div>
@@ -146,7 +146,7 @@ function Home() {
         <motion.div
           animate={{ y: [0, 10, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-white/70"
+          className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 text-foreground/70"
         >
           <ChevronDown className="h-6 w-6" />
         </motion.div>
@@ -192,8 +192,8 @@ function Home() {
 
             <Reveal delay={0.15}>
               <div className="relative aspect-square overflow-hidden rounded-[2rem] border border-border/50 bg-glass-strong shadow-elegant">
-                <img src={showroom} alt="Spatial showcase scene" className="absolute inset-0 h-full w-full object-cover opacity-80" loading="lazy" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+                <img src={showroom} alt="Spatial showcase scene" className="absolute inset-0 h-full w-full object-cover dark:opacity-80 opacity-90 transition-opacity" loading="lazy" />
+                <div className="absolute inset-0 bg-gradient-to-t from-card/85 via-transparent to-transparent" />
 
                 {/* Floating orbs */}
                 <motion.div
@@ -210,7 +210,7 @@ function Home() {
                 <div className="absolute bottom-6 left-6 right-6 flex items-end justify-between rounded-2xl bg-glass-strong p-5">
                   <div>
                     <div className="font-mono text-[10px] uppercase tracking-widest text-gold">Live scene</div>
-                    <div className="font-display text-xl text-white">Noir GT · 360°</div>
+                    <div className="font-display text-xl text-foreground">Noir GT · 360°</div>
                   </div>
                   <button className="grid h-12 w-12 place-items-center rounded-full bg-gradient-to-br from-gold to-gold-soft text-background">
                     <ArrowRight className="h-5 w-5" />

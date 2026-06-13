@@ -123,13 +123,27 @@ const vehicleSchema = new mongoose.Schema(
   }
 );
 
-// Auto-generate slug from title before saving
-vehicleSchema.pre("save", function (next) {
+// Auto-generate unique slug from title before saving
+vehicleSchema.pre("save", async function () {
   if (this.isModified("title")) {
-    this.slug = slugify(this.title, { lower: true, strict: true });
+    let baseSlug = slugify(this.title, { lower: true, strict: true });
+    let slug = baseSlug;
+    let counter = 1;
+
+    // eslint-disable-next-line no-constant-condition
+    while (true) {
+      const existing = await mongoose.model("Vehicle").findOne({
+        slug,
+        _id: { $ne: this._id }, // exclude self when updating
+      });
+      if (!existing) break;
+      slug = `${baseSlug}-${++counter}`;
+    }
+
+    this.slug = slug;
   }
-  next();
 });
+
 
 // Compound index for common queries
 vehicleSchema.index({ isActive: 1, featured: -1, createdAt: -1 });

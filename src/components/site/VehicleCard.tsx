@@ -35,7 +35,7 @@ export function VehicleCard({ v, index = 0 }: { v: ApiVehicle; index?: number })
           )}
           <div className="absolute inset-0 bg-gradient-to-t from-card via-card/20 to-transparent" />
           <div className="absolute left-4 top-4 flex gap-2">
-            <span className="rounded-full bg-glass px-3 py-1 text-[10px] text-white font-mono uppercase tracking-widest">
+            <span className="rounded-full bg-glass px-3 py-1 text-[10px] text-foreground font-mono uppercase tracking-widest">
               {v.year}
             </span>
             <span className="rounded-full bg-gold/15 px-3 py-1 text-[10px] font-mono uppercase tracking-widest text-gold">
